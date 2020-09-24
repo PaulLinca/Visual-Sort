@@ -1,32 +1,33 @@
 package ro.lincap.visualsort.presentation.home
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ro.lincap.visualsort.R
+import androidx.fragment.app.viewModels
+import ro.lincap.visualsort.databinding.FragmentHomeBinding
 
-class HomeFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = HomeFragment()
-    }
-
-    private lateinit var viewModel: HomeViewModel
+class HomeFragment : Fragment()
+{
+    private val viewModel: HomeViewModel by viewModels()
+    private lateinit var binding: FragmentHomeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+    ): View?
+    {
+        binding = FragmentHomeBinding.inflate(inflater, container, false).apply {
+            homeViewModel = viewModel
+            lifecycleOwner = this@HomeFragment
+        }
+
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
+    override fun onActivityCreated(savedInstanceState: Bundle?)
+    {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        // TODO: Use the ViewModel
     }
-
 }
