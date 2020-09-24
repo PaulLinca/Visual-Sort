@@ -1,11 +1,14 @@
 package ro.lincap.visualsort.presentation.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import com.github.mikephil.charting.data.*
+import kotlinx.android.synthetic.main.fragment_home.*
 import ro.lincap.visualsort.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment()
@@ -29,5 +32,39 @@ class HomeFragment : Fragment()
     override fun onActivityCreated(savedInstanceState: Bundle?)
     {
         super.onActivityCreated(savedInstanceState)
+
+        configureChartAppearance()
+
+        viewModel.entries.observe(viewLifecycleOwner, Observer { entries ->
+            refreshChart(entries)
+        })
+        refreshButton.setOnClickListener {
+            refreshChart(viewModel.entries.value)
+        }
+    }
+
+    private fun configureChartAppearance()
+    {
+        // disable zoom
+        chart.setScaleEnabled(false)
+
+        // disable labels
+        chart.axisLeft.setDrawLabels(false)
+        chart.axisRight.setDrawLabels(false)
+        chart.legend.isEnabled = false
+        chart.description.isEnabled = false
+
+        // disable grid lines
+        chart.axisLeft.setDrawGridLines(false)
+        chart.axisRight.setDrawGridLines(false)
+        chart.xAxis.isEnabled = false
+    }
+
+    private fun refreshChart(entries: List<BarEntry>?)
+    {
+        val dataSet = BarDataSet(entries, "Label")
+        val lineData = BarData(dataSet)
+        chart.data = lineData
+        chart.invalidate()
     }
 }
