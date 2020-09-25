@@ -38,11 +38,15 @@ class HomeFragment : Fragment()
         viewModel.entries.observe(viewLifecycleOwner, Observer { entries ->
             refreshChart(entries)
         })
+
         refreshButton.setOnClickListener {
-            refreshChart(viewModel.entries.value)
+            viewModel.shuffleChartData()
         }
     }
 
+    /**
+     * Defines how the chart should look and behave
+     */
     private fun configureChartAppearance()
     {
         // disable zoom
@@ -60,11 +64,16 @@ class HomeFragment : Fragment()
         chart.xAxis.isEnabled = false
     }
 
+    /**
+     * Updates the chart's data set and redraws it with the new values
+     * @param entries bars the chart should display
+     */
     private fun refreshChart(entries: List<BarEntry>?)
     {
-        val dataSet = BarDataSet(entries, "Label")
+        val dataSet = BarDataSet(entries, "Values to be ordered")
         val lineData = BarData(dataSet)
         chart.data = lineData
+        chart.notifyDataSetChanged();
         chart.invalidate()
     }
 }

@@ -19,11 +19,22 @@ class HomeViewModel : ViewModel()
     private fun initChartData()
     {
         val entries = ArrayList<BarEntry>()
-        for(i in 1..100)
+        for(chartValue in 0..99)
         {
-            entries.add(BarEntry(i*1f,i*1f))
+            entries.add(BarEntry(chartValue.toFloat(),chartValue.toFloat()+ 1))
         }
         _entries.value = entries
     }
 
+    fun shuffleChartData()
+    {
+        val shuffledEntries = _entries.value!!.shuffled()
+        var counter = 0f
+        for(entry in shuffledEntries)
+        {
+            entry.x = counter
+            counter++
+        }
+        _entries.value = shuffledEntries
+    }
 }
