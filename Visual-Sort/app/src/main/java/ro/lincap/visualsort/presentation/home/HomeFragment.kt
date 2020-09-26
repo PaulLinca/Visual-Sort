@@ -4,11 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.github.mikephil.charting.data.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import ro.lincap.visualsort.R
+import ro.lincap.visualsort.data.model.BubbleSort
+import ro.lincap.visualsort.data.model.SelectionSort
 import ro.lincap.visualsort.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment()
@@ -33,7 +38,13 @@ class HomeFragment : Fragment()
     {
         super.onActivityCreated(savedInstanceState)
 
+        setupUI()
+    }
+
+    private fun setupUI()
+    {
         configureChartAppearance()
+        initAlgorithmSpinner()
 
         viewModel.entries.observe(viewLifecycleOwner, Observer { entries ->
             refreshChart(entries)
@@ -41,6 +52,10 @@ class HomeFragment : Fragment()
 
         refreshButton.setOnClickListener {
             viewModel.shuffleChartData()
+        }
+
+        applySortButton.setOnClickListener {
+            viewModel.applySorting()
         }
     }
 
@@ -62,6 +77,38 @@ class HomeFragment : Fragment()
         chart.axisLeft.setDrawGridLines(false)
         chart.axisRight.setDrawGridLines(false)
         chart.xAxis.isEnabled = false
+    }
+
+    /**
+     * Configures the adapter for the algorithm spinner
+     * Defines the user interaction
+     */
+    private fun initAlgorithmSpinner()
+    {
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.sorting_algorithms,
+            android.R.layout.simple_spinner_item)
+            .also { arrayAdapter ->
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                algorithmSpinner.adapter = arrayAdapter
+            }
+
+        algorithmSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?)
+            {
+                viewModel.sortingAlgorithm = BubbleSort()
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long)
+            {
+                when(parent?.getItemAtPosition(position))
+                {
+                    getString(R.string.bubble_sort) -> viewModel.sortingAlgorithm = BubbleSort()
+                    getString(R.string.selection_sort) -> viewModel.sortingAlgorithm = SelectionSort()
+                }
+            }
+        }
     }
 
     /**
