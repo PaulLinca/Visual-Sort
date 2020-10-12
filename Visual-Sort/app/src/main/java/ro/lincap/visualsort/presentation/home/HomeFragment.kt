@@ -80,38 +80,6 @@ class HomeFragment : Fragment()
     }
 
     /**
-     * Configures the adapter for the algorithm spinner
-     * Defines the user interaction
-     */
-    private fun initAlgorithmSpinner()
-    {
-        ArrayAdapter.createFromResource(
-            requireContext(),
-            R.array.sorting_algorithms,
-            android.R.layout.simple_spinner_item)
-            .also { arrayAdapter ->
-                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                algorithmSpinner.adapter = arrayAdapter
-            }
-
-        algorithmSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?)
-            {
-                viewModel.sortingAlgorithm = BubbleSort()
-            }
-
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long)
-            {
-                when(parent?.getItemAtPosition(position))
-                {
-                    getString(R.string.bubble_sort) -> viewModel.sortingAlgorithm = BubbleSort()
-                    getString(R.string.selection_sort) -> viewModel.sortingAlgorithm = SelectionSort()
-                }
-            }
-        }
-    }
-
-    /**
      * Updates the chart's data set and redraws it with the new values
      * @param entries bars the chart should display
      */
@@ -122,5 +90,37 @@ class HomeFragment : Fragment()
         chart.data = lineData
         chart.notifyDataSetChanged();
         chart.invalidate()
+    }
+
+    /**
+     * Configures the adapter for the algorithm spinner
+     * Defines the user interaction
+     */
+    private fun initAlgorithmSpinner()
+    {
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.sorting_algorithms,
+            android.R.layout.simple_spinner_item).also { arrayAdapter ->
+                    arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                    algorithmSpinner.adapter = arrayAdapter
+            }
+
+        algorithmSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener
+        {
+            override fun onNothingSelected(parent: AdapterView<*>?)
+            {
+                viewModel.sortingAlgorithm = BubbleSort(viewModel.sortingAlgorithm.list)
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long)
+            {
+                when(parent?.getItemAtPosition(position))
+                {
+                    getString(R.string.bubble_sort) -> viewModel.sortingAlgorithm = BubbleSort(viewModel.sortingAlgorithm.list)
+                    getString(R.string.selection_sort) -> viewModel.sortingAlgorithm = SelectionSort(viewModel.sortingAlgorithm.list)
+                }
+            }
+        }
     }
 }
