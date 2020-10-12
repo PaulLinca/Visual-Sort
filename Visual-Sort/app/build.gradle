@@ -39,7 +39,7 @@ android {
 dependencies {
     def nav_version = "2.3.0"
     def chart_version = "3.1.0"
-    def dagger_version = "2.29.1"
+    def material_version = "1.2.1"
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
@@ -60,4 +60,8 @@ dependencies {
 
     // MPAndroidChart
     implementation "com.github.PhilJay:MPAndroidChart:v$chart_version"
+
+    // Material Components
+    implementation "com.google.android.material:material:$material_version"
+
 }

@@ -15,6 +15,7 @@ class HomeViewModel : ViewModel()
     private val _entries = MutableLiveData<List<BarEntry>>()
     val entries: LiveData<List<BarEntry>>
         get() = _entries
+    val size = MutableLiveData(50f)
 
     lateinit var sortingAlgorithm: ISortingAlgorithm
 
@@ -31,7 +32,6 @@ class HomeViewModel : ViewModel()
             entries.add(BarEntry(chartValue.toFloat(),chartValue.toFloat()+ 1))
         }
         _entries.value = entries
-        var s = BarEntry(1f,2f)
     }
 
     fun shuffleChartData()
