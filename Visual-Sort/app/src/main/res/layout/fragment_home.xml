@@ -51,9 +51,9 @@
             android:id="@+id/speedSlider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:valueFrom="1.0"
-            android:valueTo="10.0"
-            android:stepSize="1.0"
+            android:valueFrom="0.0"
+            android:valueTo="1000.0"
+            android:stepSize="10.0"
             android:value="@={homeViewModel.speed}"/>
     </LinearLayout>
 

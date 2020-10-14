@@ -5,7 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.github.mikephil.charting.data.BarEntry
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import ro.lincap.visualsort.data.model.ISortingAlgorithm
 import kotlin.collections.ArrayList
@@ -19,7 +21,7 @@ class HomeViewModel : ViewModel()
     val entries: LiveData<List<BarEntry>>
         get() = _entries
     val size = MutableLiveData(50f)
-    val speed = MutableLiveData(5f)
+    val speed = MutableLiveData(10f)
 
     init
     {
@@ -40,12 +42,12 @@ class HomeViewModel : ViewModel()
 
     fun applySorting()
     {
-        GlobalScope.launch {
+        GlobalScope.launch(Dispatchers.Main) {
             _entries.value?.let { sort(it) }
         }
     }
 
-    fun sort(listToSort: List<BarEntry>)
+    suspend fun sort(listToSort: List<BarEntry>)
     {
         Log.d(this::class.java.canonicalName, "Applying sort")
 
@@ -60,7 +62,7 @@ class HomeViewModel : ViewModel()
                     listToSort[currentPosition + 1].y = temp
                 }
                 _entries.postValue(listToSort)
-                Thread.sleep(10 - speed.value!!.toLong())
+                delay(1000 - speed.value!!.toLong())
             }
         }
     }

@@ -44,15 +44,8 @@ class HomeFragment : Fragment()
     private fun setupUI()
     {
         configureChartAppearance()
+        configureObservers()
         initAlgorithmSpinner()
-
-        viewModel.entries.observe(viewLifecycleOwner, Observer { entries ->
-            refreshChart(entries)
-        })
-
-        viewModel.size.observe(viewLifecycleOwner, Observer {
-            viewModel.populateChartData()
-        })
     }
 
     /**
@@ -73,6 +66,20 @@ class HomeFragment : Fragment()
         chart.axisLeft.setDrawGridLines(false)
         chart.axisRight.setDrawGridLines(false)
         chart.xAxis.isEnabled = false
+    }
+
+    /**
+     * Configures the viewModel values that should be observed and sets what should happen when notified
+     */
+    private fun configureObservers()
+    {
+        viewModel.entries.observe(viewLifecycleOwner, Observer { entries ->
+            refreshChart(entries)
+        })
+
+        viewModel.size.observe(viewLifecycleOwner, Observer {
+            viewModel.populateChartData()
+        })
     }
 
     /**
