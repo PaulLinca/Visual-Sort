@@ -22,6 +22,7 @@ class HomeViewModel : ViewModel()
         get() = _entries
     val size = MutableLiveData(50f)
     val speed = MutableLiveData(10f)
+    val highlightedEntries = arrayListOf<Int>()
 
     init
     {
@@ -61,6 +62,11 @@ class HomeViewModel : ViewModel()
                     listToSort[currentPosition].y = listToSort[currentPosition + 1].y
                     listToSort[currentPosition + 1].y = temp
                 }
+
+                highlightedEntries.clear()
+                highlightedEntries.add(currentPosition)
+                highlightedEntries.add(currentPosition + 1)
+
                 _entries.postValue(listToSort)
                 delay(1000 - speed.value!!.toLong())
             }

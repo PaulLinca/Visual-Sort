@@ -1,5 +1,6 @@
 package ro.lincap.visualsort.presentation.home
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +21,7 @@ class HomeFragment : Fragment()
 {
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var binding: FragmentHomeBinding
+    private val barChartColors: IntArray = IntArray(100) { Color.BLUE}
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -120,7 +122,13 @@ class HomeFragment : Fragment()
      */
     private fun refreshChart(entries: List<BarEntry>?)
     {
-        val dataSet = BarDataSet(entries?.take(viewModel.size.value!!.toInt()), "Values to be ordered")
+        val dataSet = BarDataSet(entries, "Values to be ordered")
+        val colors = barChartColors.take(viewModel.size.value!!.toInt() + 1).toMutableList()
+        for(color in viewModel.highlightedEntries)
+        {
+            colors[color] = Color.GREEN
+        }
+        dataSet.colors = colors
         val lineData = BarData(dataSet)
         chart.data = lineData
         chart.notifyDataSetChanged()
