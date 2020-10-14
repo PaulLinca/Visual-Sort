@@ -79,6 +79,10 @@ class HomeFragment : Fragment()
             refreshChart(entries)
         })
 
+        viewModel.entriesToHighlight.observe(viewLifecycleOwner, Observer {
+            refreshChart(viewModel.entries.value)
+        })
+
         viewModel.size.observe(viewLifecycleOwner, Observer {
             viewModel.populateChartData()
         })
@@ -124,9 +128,9 @@ class HomeFragment : Fragment()
     {
         val dataSet = BarDataSet(entries, "Values to be ordered")
         val colors = barChartColors.take(viewModel.size.value!!.toInt() + 1).toMutableList()
-        for(color in viewModel.highlightedEntries)
+        for(index in viewModel.entriesToHighlight.value!!)
         {
-            colors[color] = Color.GREEN
+            colors[index.first.toInt()] = index.second
         }
         dataSet.colors = colors
         val lineData = BarData(dataSet)

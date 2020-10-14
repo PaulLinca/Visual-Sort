@@ -1,16 +1,14 @@
 package ro.lincap.visualsort.presentation.home
 
-import android.util.Log
+import android.graphics.Color
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.github.mikephil.charting.data.BarEntry
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import ro.lincap.visualsort.data.model.ISortingAlgorithm
-import kotlin.collections.ArrayList
 import kotlin.random.Random
 
 class HomeViewModel : ViewModel()
@@ -22,7 +20,7 @@ class HomeViewModel : ViewModel()
         get() = _entries
     val size = MutableLiveData(50f)
     val speed = MutableLiveData(10f)
-    val highlightedEntries = arrayListOf<Int>()
+    val entriesToHighlight = MutableLiveData(listOf<Pair<Float, Int>>())
 
     init
     {
@@ -44,32 +42,7 @@ class HomeViewModel : ViewModel()
     fun applySorting()
     {
         GlobalScope.launch(Dispatchers.Main) {
-            sortingAlgorithm.sort(_entries)
-        }
-    }
-
-    suspend fun sort(listToSort: List<BarEntry>)
-    {
-        Log.d(this::class.java.canonicalName, "Applying sort")
-
-        for(currentPass in 0 until (listToSort.size - 1))
-        {
-            for(currentPosition in 0 until (listToSort.size - currentPass - 1))
-            {
-                if (listToSort[currentPosition].y > listToSort[currentPosition + 1].y)
-                {
-                    val temp = listToSort[currentPosition].y
-                    listToSort[currentPosition].y = listToSort[currentPosition + 1].y
-                    listToSort[currentPosition + 1].y = temp
-                }
-
-                highlightedEntries.clear()
-                highlightedEntries.add(currentPosition)
-                highlightedEntries.add(currentPosition + 1)
-
-                _entries.postValue(listToSort)
-                delay(1000 - speed.value!!.toLong())
-            }
+            sortingAlgorithm.sort(_entries, speed, entriesToHighlight)
         }
     }
 }
