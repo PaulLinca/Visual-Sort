@@ -13,13 +13,13 @@ import kotlin.random.Random
 
 class HomeViewModel : ViewModel()
 {
+    lateinit var sortingAlgorithm: ISortingAlgorithm
+
     private val _entries = MutableLiveData<List<BarEntry>>()
     val entries: LiveData<List<BarEntry>>
         get() = _entries
     val size = MutableLiveData(50f)
     val speed = MutableLiveData(5f)
-
-    lateinit var sortingAlgorithm: ISortingAlgorithm
 
     init
     {

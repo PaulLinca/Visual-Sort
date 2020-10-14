@@ -36,7 +36,8 @@
             android:id="@+id/applySortButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Start"/>
+            android:text="Start"
+            android:onClick="@{() -> homeViewModel.applySorting()}"/>
 
         <com.google.android.material.slider.Slider
             android:layout_width="match_parent"

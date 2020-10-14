@@ -53,10 +53,6 @@ class HomeFragment : Fragment()
         viewModel.size.observe(viewLifecycleOwner, Observer {
             viewModel.populateChartData()
         })
-
-        applySortButton.setOnClickListener {
-            viewModel.applySorting()
-        }
     }
 
     /**
@@ -120,7 +116,7 @@ class HomeFragment : Fragment()
         val dataSet = BarDataSet(entries?.take(viewModel.size.value!!.toInt()), "Values to be ordered")
         val lineData = BarData(dataSet)
         chart.data = lineData
-        chart.notifyDataSetChanged();
+        chart.notifyDataSetChanged()
         chart.invalidate()
     }
 }
