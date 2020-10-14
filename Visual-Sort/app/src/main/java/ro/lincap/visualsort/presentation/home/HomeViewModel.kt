@@ -9,6 +9,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import ro.lincap.visualsort.data.model.ISortingAlgorithm
 import kotlin.collections.ArrayList
+import kotlin.random.Random
 
 class HomeViewModel : ViewModel()
 {
@@ -16,34 +17,25 @@ class HomeViewModel : ViewModel()
     val entries: LiveData<List<BarEntry>>
         get() = _entries
     val size = MutableLiveData(50f)
+    val speed = MutableLiveData(5f)
 
     lateinit var sortingAlgorithm: ISortingAlgorithm
 
     init
     {
-        initChartData()
+        populateChartData()
     }
 
-    private fun initChartData()
+    fun populateChartData()
     {
         val entries = ArrayList<BarEntry>()
-        for(chartValue in 0..99)
+        val currentSize = size.value!!.toInt()
+        for(chartPosition in 0..currentSize)
         {
-            entries.add(BarEntry(chartValue.toFloat(),chartValue.toFloat()+ 1))
+            val randomValue = Random.nextInt(1, currentSize).toFloat()
+            entries.add(BarEntry(chartPosition.toFloat(), randomValue))
         }
         _entries.value = entries
-    }
-
-    fun shuffleChartData()
-    {
-        val shuffledEntries = _entries.value!!.shuffled()
-        var counter = 0f
-        for(entry in shuffledEntries)
-        {
-            entry.x = counter
-            counter++
-        }
-        _entries.value = shuffledEntries
     }
 
     fun applySorting()
@@ -68,7 +60,7 @@ class HomeViewModel : ViewModel()
                     listToSort[currentPosition + 1].y = temp
                 }
                 _entries.postValue(listToSort)
-                Thread.sleep(10)
+                Thread.sleep(10 - speed.value!!.toLong())
             }
         }
     }

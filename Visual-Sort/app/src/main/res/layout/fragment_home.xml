@@ -24,7 +24,8 @@
             android:id="@+id/refreshButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Refresh"/>
+            android:text="Refresh"
+            android:onClick="@{() -> homeViewModel.populateChartData()}"/>
 
         <Spinner
             android:id="@+id/algorithmSpinner"
@@ -44,6 +45,15 @@
             android:valueTo="100.0"
             android:stepSize="1.0"
             android:value="@={homeViewModel.size}"/>
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/speedSlider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:valueFrom="1.0"
+            android:valueTo="10.0"
+            android:stepSize="1.0"
+            android:value="@={homeViewModel.speed}"/>
     </LinearLayout>
 
 </layout>
