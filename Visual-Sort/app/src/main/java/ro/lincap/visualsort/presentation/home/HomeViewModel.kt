@@ -44,7 +44,7 @@ class HomeViewModel : ViewModel()
     fun applySorting()
     {
         GlobalScope.launch(Dispatchers.Main) {
-            _entries.value?.let { sort(it) }
+            sortingAlgorithm.sort(_entries)
         }
     }
 
