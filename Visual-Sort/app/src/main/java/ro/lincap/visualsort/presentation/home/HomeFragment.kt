@@ -74,6 +74,8 @@ class HomeFragment : Fragment()
 
         // remove side padding
         chart.setViewPortOffsets(0f, 0f, 0f, 0f)
+        // remove bottom padding
+        chart.axisLeft.axisMinimum = 0f
     }
 
     /**
