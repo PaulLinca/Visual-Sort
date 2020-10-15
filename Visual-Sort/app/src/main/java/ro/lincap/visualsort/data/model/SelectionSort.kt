@@ -27,7 +27,7 @@ class SelectionSort : ISortingAlgorithm
 
                     highlightedValues.postValue(arrayListOf(Pair((elementToCompare).toFloat(), Color.RED), Pair((minimumIndex).toFloat(), Color.RED)))
                     delay(speed.value!!.toLong())
-                    
+
                     minimumIndex = elementToCompare
                 }
                 else

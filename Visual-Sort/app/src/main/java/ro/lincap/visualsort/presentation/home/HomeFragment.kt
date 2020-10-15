@@ -58,6 +58,9 @@ class HomeFragment : Fragment()
         // disable zoom
         chart.setScaleEnabled(false)
 
+        // Disable touch
+        chart.setTouchEnabled(false)
+
         // disable labels
         chart.axisLeft.setDrawLabels(false)
         chart.axisRight.setDrawLabels(false)
@@ -68,6 +71,9 @@ class HomeFragment : Fragment()
         chart.axisLeft.setDrawGridLines(false)
         chart.axisRight.setDrawGridLines(false)
         chart.xAxis.isEnabled = false
+
+        // remove side padding
+        chart.setViewPortOffsets(0f, 0f, 0f, 0f)
     }
 
     /**
@@ -126,15 +132,24 @@ class HomeFragment : Fragment()
      */
     private fun refreshChart(entries: List<BarEntry>?)
     {
+        // Create the data set
         val dataSet = BarDataSet(entries, "Values to be ordered")
+
+        // Set how the bars should be colored
         val colors = barChartColors.take(viewModel.size.value!!.toInt() + 1).toMutableList()
         for(index in viewModel.entriesToHighlight.value!!)
         {
             colors[index.first.toInt()] = index.second
         }
         dataSet.colors = colors
-        val lineData = BarData(dataSet)
-        chart.data = lineData
+
+        // Disable the bar value labels
+        dataSet.setDrawValues(false);
+
+        // Set the new chart data
+        chart.data = BarData(dataSet)
+
+        // Redraw the chart
         chart.notifyDataSetChanged()
         chart.invalidate()
     }
