@@ -1,6 +1,5 @@
 package ro.lincap.visualsort.data.model
 
-import android.graphics.Color
 import androidx.lifecycle.MutableLiveData
 import com.github.mikephil.charting.data.BarEntry
 
