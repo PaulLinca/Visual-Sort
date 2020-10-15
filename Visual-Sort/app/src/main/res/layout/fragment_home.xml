@@ -18,43 +18,53 @@
         <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/chart"
             android:layout_width="match_parent"
-            android:layout_height="500dp" />
+            android:layout_height="0dp"
+            android:layout_weight="2"/>
 
-        <Button
-            android:id="@+id/refreshButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Refresh"
-            android:onClick="@{() -> homeViewModel.populateChartData()}"/>
-
-        <Spinner
-            android:id="@+id/algorithmSpinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <Button
-            android:id="@+id/applySortButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Start"
-            android:onClick="@{() -> homeViewModel.applySorting()}"/>
-
-        <com.google.android.material.slider.Slider
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:valueFrom="10.0"
-            android:valueTo="100.0"
-            android:stepSize="1.0"
-            android:value="@={homeViewModel.size}"/>
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <com.google.android.material.slider.Slider
-            android:id="@+id/speedSlider"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:valueFrom="0.0"
-            android:valueTo="1000.0"
-            android:stepSize="10.0"
-            android:value="@={homeViewModel.speed}"/>
+            <Button
+                android:id="@+id/refreshButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Refresh"
+                android:onClick="@{() -> homeViewModel.populateChartData()}"/>
+
+            <Spinner
+                android:id="@+id/algorithmSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/applySortButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Start"
+                android:onClick="@{() -> homeViewModel.applySorting()}"/>
+
+            <com.google.android.material.slider.Slider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:valueFrom="10.0"
+                android:valueTo="100.0"
+                android:stepSize="1.0"
+                android:value="@={homeViewModel.size}"/>
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/speedSlider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:valueFrom="0.0"
+                android:valueTo="1000.0"
+                android:stepSize="10.0"
+                android:value="@={homeViewModel.speed}"/>
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </layout>
