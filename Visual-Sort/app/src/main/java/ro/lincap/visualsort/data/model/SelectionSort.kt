@@ -12,6 +12,7 @@ class SelectionSort : ISortingAlgorithm
     {
         Log.d(this::class.java.canonicalName, "Applying sort")
 
+        val sortedEntries = arrayListOf<Pair<Float, Int>>()
         // Make a copy of the list
         val listCopy = listToSort.value!!
         for(currentElement in 0 until (listCopy.size - 1))
@@ -19,20 +20,20 @@ class SelectionSort : ISortingAlgorithm
             var minimumIndex = currentElement
             for(elementToCompare in currentElement + 1 until (listCopy.size))
             {
-                highlightedValues.postValue(arrayListOf(Pair(elementToCompare.toFloat(), Color.YELLOW), Pair((minimumIndex).toFloat(), Color.GREEN)))
+                highlightedValues.postValue(arrayListOf(Pair(elementToCompare.toFloat(), Color.YELLOW), Pair((minimumIndex).toFloat(), Color.GREEN)) + sortedEntries)
                 delay(speed.value!!.toLong())
 
                 if(listCopy[minimumIndex].y > listCopy[elementToCompare].y)
                 {
 
-                    highlightedValues.postValue(arrayListOf(Pair((elementToCompare).toFloat(), Color.RED), Pair((minimumIndex).toFloat(), Color.RED)))
+                    highlightedValues.postValue(arrayListOf(Pair((elementToCompare).toFloat(), Color.RED), Pair((minimumIndex).toFloat(), Color.RED)) + sortedEntries)
                     delay(speed.value!!.toLong())
 
                     minimumIndex = elementToCompare
                 }
                 else
                 {
-                    highlightedValues.postValue(arrayListOf(Pair((elementToCompare).toFloat(), Color.GREEN), Pair((minimumIndex).toFloat(), Color.GREEN)))
+                    highlightedValues.postValue(arrayListOf(Pair((elementToCompare).toFloat(), Color.GREEN), Pair((minimumIndex).toFloat(), Color.GREEN)) + sortedEntries)
                     delay(speed.value!!.toLong())
                 }
             }
@@ -45,8 +46,9 @@ class SelectionSort : ISortingAlgorithm
             }
 
             listToSort.postValue(listCopy)
+            sortedEntries.add(Pair(currentElement.toFloat(), Color.BLACK))
             delay(speed.value!!.toLong())
         }
-        highlightedValues.postValue(arrayListOf())
+        highlightedValues.postValue(sortedEntries + Pair(listCopy.lastIndex.toFloat(), Color.BLACK))
     }
 }

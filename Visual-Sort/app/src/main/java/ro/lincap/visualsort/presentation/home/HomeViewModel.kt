@@ -29,6 +29,8 @@ class HomeViewModel : ViewModel()
 
     fun populateChartData()
     {
+        entriesToHighlight.value = listOf()
+
         val entries = ArrayList<BarEntry>()
         val currentSize = size.value!!.toInt()
         for(chartPosition in 0..currentSize)
