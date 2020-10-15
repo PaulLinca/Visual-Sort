@@ -12,6 +12,7 @@ class BubbleSort : ISortingAlgorithm
     {
         Log.d(this::class.java.canonicalName, "Applying sort")
 
+        // Make a copy of the list
         val listCopy = listToSort.value!!
         for(currentPass in 0 until (listCopy.size - 1))
         {
@@ -32,6 +33,8 @@ class BubbleSort : ISortingAlgorithm
                 {
                     highlightedValues.postValue(arrayListOf(Pair(currentPosition.toFloat(), Color.GREEN), Pair((currentPosition + 1).toFloat(), Color.GREEN)))
                 }
+
+                highlightedValues.postValue(arrayListOf(Pair(currentPosition.toFloat(), Color.GREEN), Pair((currentPosition + 1).toFloat(), Color.GREEN)))
 
                 listToSort.postValue(listCopy)
                 delay(speed.value!!.toLong())
