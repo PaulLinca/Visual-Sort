@@ -17,12 +17,13 @@ import ro.lincap.visualsort.R
 import ro.lincap.visualsort.data.model.BubbleSort
 import ro.lincap.visualsort.data.model.SelectionSort
 import ro.lincap.visualsort.databinding.FragmentHomeBinding
+import ro.lincap.visualsort.util.Constants
 
 class HomeFragment : Fragment()
 {
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var binding: FragmentHomeBinding
-    private val barChartColors: IntArray = IntArray(100) { Color.BLUE}
+    private val barChartColors: IntArray = IntArray(100) { Constants.BLUE}
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -120,11 +121,14 @@ class HomeFragment : Fragment()
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long)
             {
-                when(parent?.getItemAtPosition(position))
+                val algorithm = parent?.getItemAtPosition(position)
+                when(algorithm)
                 {
                     getString(R.string.bubble_sort) -> viewModel.sortingAlgorithm = BubbleSort()
                     getString(R.string.selection_sort) -> viewModel.sortingAlgorithm = SelectionSort()
                 }
+
+                (activity as AppCompatActivity).supportActionBar?.title = algorithm as String
             }
         }
     }
