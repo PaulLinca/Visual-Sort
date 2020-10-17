@@ -91,6 +91,18 @@
                     app:labelBehavior="gone"
                     app:tickColor="@android:color/transparent"/>
 
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/changeAlgorithmButton"
+                    style="@style/MaterialButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:enabled="@{!homeViewModel.isBusy}"
+                    android:text="Change algorithm"
+                    android:backgroundTint="@color/colorPrimaryLight"
+                    app:strokeWidth="1dp"
+                    app:cornerRadius="10dp"/>
+
             </LinearLayout>
 
         </LinearLayout>

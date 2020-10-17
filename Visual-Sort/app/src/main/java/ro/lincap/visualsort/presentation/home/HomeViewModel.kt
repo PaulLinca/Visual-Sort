@@ -5,15 +5,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.github.mikephil.charting.data.BarEntry
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import ro.lincap.visualsort.data.model.BubbleSort
 import ro.lincap.visualsort.data.model.ISortingAlgorithm
 import kotlin.random.Random
 
 class HomeViewModel : ViewModel()
 {
-    lateinit var sortingAlgorithm: ISortingAlgorithm
+    var sortingAlgorithm: ISortingAlgorithm = BubbleSort()
 
     private val _entries = MutableLiveData<List<BarEntry>>()
     val entries: LiveData<List<BarEntry>>
