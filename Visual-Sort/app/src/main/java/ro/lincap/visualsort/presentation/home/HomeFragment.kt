@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.github.mikephil.charting.data.*
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.fragment_home.*
 import ro.lincap.visualsort.R
 import ro.lincap.visualsort.data.model.BubbleSort
@@ -49,7 +50,11 @@ class HomeFragment : Fragment()
     {
         configureChartAppearance()
         configureObservers()
-//        initAlgorithmSpinner()
+
+        (activity as AppCompatActivity).supportActionBar?.title = "Bubble Sort"
+        changeAlgorithmButton.setOnClickListener {
+            handleAlgorithmSwitch()
+        }
     }
 
     /**
@@ -132,6 +137,26 @@ class HomeFragment : Fragment()
 //            }
 //        }
 //    }
+
+    private fun handleAlgorithmSwitch()
+    {
+        val items = arrayOf("Bubble Sort", "Selection Sort")
+        context?.let {
+            MaterialAlertDialogBuilder(it)
+                .setTitle("Choose an algorithm")
+                .setItems(items) {dialog, which ->
+                    when(which)
+                    {
+                        0 -> viewModel.sortingAlgorithm = BubbleSort()
+                        1 -> viewModel.sortingAlgorithm = SelectionSort()
+                    }
+                    (activity as AppCompatActivity).supportActionBar?.title = items[which]
+                }
+                .setCancelable(false)
+                .show()
+        }
+
+    }
 
     /**
      * Updates the chart's data set and redraws it with the new values
