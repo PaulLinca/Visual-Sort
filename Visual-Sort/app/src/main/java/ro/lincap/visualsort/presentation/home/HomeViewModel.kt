@@ -24,6 +24,7 @@ class HomeViewModel : ViewModel()
     val speed = MutableLiveData(10f)
     val entriesToHighlight = MutableLiveData(listOf<Pair<Float, Int>>())
     val isBusy = MutableLiveData(false)
+    val currentAlgorithm = MutableLiveData("BubbleSort")
 
     init
     {

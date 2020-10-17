@@ -52,7 +52,6 @@ class HomeFragment : Fragment()
         configureChartAppearance()
         configureObservers()
 
-        (activity as AppCompatActivity).supportActionBar?.title = "Bubble Sort"
         changeAlgorithmButton.setOnClickListener {
             handleAlgorithmSwitch()
         }
@@ -159,7 +158,7 @@ class HomeFragment : Fragment()
                         0 -> viewModel.sortingAlgorithm = BubbleSort()
                         1 -> viewModel.sortingAlgorithm = SelectionSort()
                     }
-                    (activity as AppCompatActivity).supportActionBar?.title = items[which]
+                    viewModel.currentAlgorithm.value = items[which]
                 }
                 .setCancelable(false)
                 .show()
