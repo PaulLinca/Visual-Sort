@@ -12,4 +12,12 @@
     <color name="primaryYellow">#ffe05d</color>
     <color name="primaryGreen">#b8de6f</color>
 
+    <color name="buttonEnabled">#ffffff</color>
+    <color name="buttonDisabled">#7fffffff</color>
+
+    <color name="trackActiveEnabled">#ffffff</color>
+    <color name="trackActiveDisabled">#7fffffff</color>
+
+    <color name="trackInactiveEnabled">#7fffffff</color>
+    <color name="trackInactiveDisabled">#2FFFFFFF</color>
 </resources>

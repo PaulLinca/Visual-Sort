@@ -49,7 +49,7 @@ class HomeFragment : Fragment()
     {
         configureChartAppearance()
         configureObservers()
-        initAlgorithmSpinner()
+//        initAlgorithmSpinner()
     }
 
     /**
@@ -102,36 +102,36 @@ class HomeFragment : Fragment()
      * Configures the adapter for the algorithm spinner
      * Defines the user interaction
      */
-    private fun initAlgorithmSpinner()
-    {
-        ArrayAdapter.createFromResource(
-            requireContext(),
-            R.array.sorting_algorithms,
-            android.R.layout.simple_spinner_item)
-            .also { arrayAdapter ->
-                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                algorithmSpinner.adapter = arrayAdapter
-            }
-
-        algorithmSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?)
-            {
-                viewModel.sortingAlgorithm = BubbleSort()
-            }
-
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long)
-            {
-                val algorithm = parent?.getItemAtPosition(position)
-                when(algorithm)
-                {
-                    getString(R.string.bubble_sort) -> viewModel.sortingAlgorithm = BubbleSort()
-                    getString(R.string.selection_sort) -> viewModel.sortingAlgorithm = SelectionSort()
-                }
-
-                (activity as AppCompatActivity).supportActionBar?.title = algorithm as String
-            }
-        }
-    }
+//    private fun initAlgorithmSpinner()
+//    {
+//        ArrayAdapter.createFromResource(
+//            requireContext(),
+//            R.array.sorting_algorithms,
+//            android.R.layout.simple_spinner_item)
+//            .also { arrayAdapter ->
+//                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+//                algorithmSpinner.adapter = arrayAdapter
+//            }
+//
+//        algorithmSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//            override fun onNothingSelected(parent: AdapterView<*>?)
+//            {
+//                viewModel.sortingAlgorithm = BubbleSort()
+//            }
+//
+//            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long)
+//            {
+//                val algorithm = parent?.getItemAtPosition(position)
+//                when(algorithm)
+//                {
+//                    getString(R.string.bubble_sort) -> viewModel.sortingAlgorithm = BubbleSort()
+//                    getString(R.string.selection_sort) -> viewModel.sortingAlgorithm = SelectionSort()
+//                }
+//
+//                (activity as AppCompatActivity).supportActionBar?.title = algorithm as String
+//            }
+//        }
+//    }
 
     /**
      * Updates the chart's data set and redraws it with the new values

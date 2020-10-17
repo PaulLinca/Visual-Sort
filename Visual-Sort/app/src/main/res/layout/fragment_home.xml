@@ -36,72 +36,60 @@
                 android:background="@color/colorPrimaryLight">
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/applySortButton"
+                    style="@style/MaterialButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginHorizontal="70dp"
                     android:layout_marginBottom="10dp"
                     android:padding="8dp"
+                    android:enabled="@{!homeViewModel.isBusy}"
                     android:text="Visualize"
-                    android:textColor="@android:color/white"
                     android:textSize="17sp"
                     android:backgroundTint="@color/colorPrimaryLight"
-                    app:strokeColor="@android:color/white"
                     app:strokeWidth="1dp"
                     app:cornerRadius="10dp"
                     app:elevation="0dp"
                     android:onClick="@{() -> homeViewModel.applySorting()}"/>
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/refreshButton"
+                    style="@style/MaterialButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    android:enabled="@{!homeViewModel.isBusy}"
                     android:text="Shuffle values"
-                    android:textColor="@android:color/white"
                     android:backgroundTint="@color/colorPrimaryLight"
-                    app:strokeColor="@android:color/white"
                     app:strokeWidth="1dp"
                     app:cornerRadius="10dp"
                     android:onClick="@{() -> homeViewModel.populateChartData()}"/>
 
                 <com.google.android.material.slider.Slider
+                    style="@style/MaterialSliderStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    android:layout_marginHorizontal="20dp"
                     android:valueFrom="10.0"
                     android:valueTo="100.0"
                     android:stepSize="1.0"
                     android:value="@={homeViewModel.size}"
-                    android:layout_marginHorizontal="20dp"
+                    android:enabled="@{!homeViewModel.isBusy}"
                     app:labelBehavior="gone"
-                    app:trackColorActive="@color/colorAccent"
-                    app:trackColorInactive="@color/primaryBlueHalfOpacity"
-                    app:tickColor="@android:color/transparent"
-                    app:thumbColor="@color/colorAccent"/>
+                    app:tickColor="@android:color/transparent"/>
 
                 <com.google.android.material.slider.Slider
-                    android:id="@+id/speedSlider"
+                    style="@style/MaterialSliderStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    android:layout_marginHorizontal="20dp"
                     android:valueFrom="0.0"
                     android:valueTo="1000.0"
                     android:stepSize="10.0"
                     android:value="@={homeViewModel.speed}"
-                    android:layout_marginHorizontal="20dp"
                     app:labelBehavior="gone"
-                    app:trackColorActive="@color/colorAccent"
-                    app:trackColorInactive="@color/primaryBlueHalfOpacity"
-                    app:tickColor="@android:color/transparent"
-                    app:thumbColor="@color/colorAccent"/>
-
-                <Spinner
-                    android:id="@+id/algorithmSpinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"/>
+                    app:tickColor="@android:color/transparent"/>
 
             </LinearLayout>
 

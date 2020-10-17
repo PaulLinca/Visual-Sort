@@ -7,4 +7,19 @@
         <item name="android:textAllCaps">false</item>
     </style>
 
+    <style
+        name="MaterialButtonStyle"
+        parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="strokeColor">@color/color_states_materialbutton</item>
+        <item name="android:textColor">@color/color_states_materialbutton</item>
+    </style>
+
+    <style
+        name="MaterialSliderStyle"
+        parent="Widget.MaterialComponents.Slider">
+        <item name="thumbColor">@color/color_states_trackactive</item>
+        <item name="trackColorActive">@color/color_states_trackactive</item>
+        <item name="trackColorInactive">@color/color_states_trackinactive</item>
+    </style>
+
 </resources>

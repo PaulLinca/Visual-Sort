@@ -21,6 +21,7 @@ class HomeViewModel : ViewModel()
     val size = MutableLiveData(50f)
     val speed = MutableLiveData(10f)
     val entriesToHighlight = MutableLiveData(listOf<Pair<Float, Int>>())
+    val isBusy = MutableLiveData(false)
 
     init
     {
@@ -44,7 +45,9 @@ class HomeViewModel : ViewModel()
     fun applySorting()
     {
         GlobalScope.launch(Dispatchers.Main) {
+            isBusy.value = true
             sortingAlgorithm.sort(_entries, speed, entriesToHighlight)
+            isBusy.value = false
         }
     }
 }
