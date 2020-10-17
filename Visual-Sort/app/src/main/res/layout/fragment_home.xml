@@ -65,6 +65,7 @@
                     android:onClick="@{() -> homeViewModel.populateChartData()}"/>
 
                 <com.google.android.material.slider.Slider
+                    android:id="@+id/sizeSlider"
                     style="@style/MaterialSliderStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -75,10 +76,10 @@
                     android:stepSize="1.0"
                     android:value="@={homeViewModel.size}"
                     android:enabled="@{!homeViewModel.isBusy}"
-                    app:labelBehavior="gone"
                     app:tickColor="@android:color/transparent"/>
 
                 <com.google.android.material.slider.Slider
+                    android:id="@+id/speedSlider"
                     style="@style/MaterialSliderStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -88,7 +89,6 @@
                     android:valueTo="1000.0"
                     android:stepSize="10.0"
                     android:value="@={homeViewModel.speed}"
-                    app:labelBehavior="gone"
                     app:tickColor="@android:color/transparent"/>
 
                 <com.google.android.material.button.MaterialButton

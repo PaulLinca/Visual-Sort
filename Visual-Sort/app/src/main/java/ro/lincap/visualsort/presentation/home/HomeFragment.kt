@@ -13,6 +13,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.github.mikephil.charting.data.*
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.slider.LabelFormatter
 import kotlinx.android.synthetic.main.fragment_home.*
 import ro.lincap.visualsort.R
 import ro.lincap.visualsort.data.model.BubbleSort
@@ -54,6 +55,14 @@ class HomeFragment : Fragment()
         (activity as AppCompatActivity).supportActionBar?.title = "Bubble Sort"
         changeAlgorithmButton.setOnClickListener {
             handleAlgorithmSwitch()
+        }
+
+        speedSlider.setLabelFormatter {
+            "Speed: $it"
+        }
+
+        sizeSlider.setLabelFormatter {
+            "Size: $it"
         }
     }
 
