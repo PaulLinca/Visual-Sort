@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#1f242b</color>
     <color name="colorAccent">#28abb9</color>
 
+    <color name="colorPrimaryLight">#29303a</color>
+
     <color name="primaryBlue">#28abb9</color>
     <color name="primaryBlueHalfOpacity">#7f28abb9</color>
     <color name="primaryRed">#ed6663</color>

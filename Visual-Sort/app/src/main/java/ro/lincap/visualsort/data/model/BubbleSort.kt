@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.github.mikephil.charting.data.BarEntry
 import kotlinx.coroutines.delay
+import ro.lincap.visualsort.util.Constants
 
 class BubbleSort : ISortingAlgorithm
 {
@@ -19,12 +20,12 @@ class BubbleSort : ISortingAlgorithm
         {
             for(currentPosition in 0 until (listCopy.size - currentPass - 1))
             {
-                highlightedValues.postValue(arrayListOf(Pair(currentPosition.toFloat(), Color.YELLOW), Pair((currentPosition + 1).toFloat(), Color.YELLOW)) + sortedEntries)
+                highlightedValues.postValue(arrayListOf(Pair(currentPosition.toFloat(), Constants.YELLOW), Pair((currentPosition + 1).toFloat(), Constants.YELLOW)) + sortedEntries)
                 delay(speed.value!!.toLong())
 
                 if(listCopy[currentPosition].y > listCopy[currentPosition + 1].y)
                 {
-                    highlightedValues.postValue(arrayListOf(Pair(currentPosition.toFloat(), Color.RED), Pair((currentPosition + 1).toFloat(), Color.RED)) + sortedEntries)
+                    highlightedValues.postValue(arrayListOf(Pair(currentPosition.toFloat(), Constants.RED), Pair((currentPosition + 1).toFloat(), Constants.RED)) + sortedEntries)
 
                     val temp = listCopy[currentPosition].y
                     listCopy[currentPosition].y = listCopy[currentPosition+1].y
@@ -32,16 +33,14 @@ class BubbleSort : ISortingAlgorithm
                 }
                 else
                 {
-                    highlightedValues.postValue(arrayListOf(Pair(currentPosition.toFloat(), Color.GREEN), Pair((currentPosition + 1).toFloat(), Color.GREEN)) + sortedEntries)
+                    highlightedValues.postValue(arrayListOf(Pair(currentPosition.toFloat(), Constants.GREEN), Pair((currentPosition + 1).toFloat(), Constants.GREEN)) + sortedEntries)
                 }
-
-                highlightedValues.postValue(arrayListOf(Pair(currentPosition.toFloat(), Color.GREEN), Pair((currentPosition + 1).toFloat(), Color.GREEN))+ sortedEntries)
 
                 listToSort.postValue(listCopy)
                 delay(speed.value!!.toLong())
             }
-            sortedEntries.add(Pair(listCopy.size.toFloat() - 1 - currentPass, Color.BLACK))
+            sortedEntries.add(Pair(listCopy.size.toFloat() - 1 - currentPass, Constants.PURPLE))
         }
-        highlightedValues.postValue(sortedEntries + Pair(0f, Color.BLACK))
+        highlightedValues.postValue(sortedEntries + Pair(0f, Constants.PURPLE))
     }
 }

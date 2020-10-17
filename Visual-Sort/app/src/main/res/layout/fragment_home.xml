@@ -18,7 +18,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@color/colorPrimary">
 
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/chart"
@@ -30,29 +31,39 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingTop="10dp"
+                android:background="@color/colorPrimaryLight">
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/colorPrimary"/>
-
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/applySortButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginHorizontal="70dp"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_marginBottom="10dp"
+                    android:padding="8dp"
                     android:text="Visualize"
+                    android:textColor="@android:color/white"
+                    android:textSize="17sp"
+                    android:backgroundTint="@color/colorPrimaryLight"
+                    app:strokeColor="@android:color/white"
+                    app:strokeWidth="1dp"
+                    app:cornerRadius="10dp"
+                    app:elevation="0dp"
                     android:onClick="@{() -> homeViewModel.applySorting()}"/>
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/refreshButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="Refresh"
+                    android:text="Shuffle values"
+                    android:textColor="@android:color/white"
+                    android:backgroundTint="@color/colorPrimaryLight"
+                    app:strokeColor="@android:color/white"
+                    app:strokeWidth="1dp"
+                    app:cornerRadius="10dp"
                     android:onClick="@{() -> homeViewModel.populateChartData()}"/>
 
                 <com.google.android.material.slider.Slider
@@ -63,8 +74,9 @@
                     android:valueTo="100.0"
                     android:stepSize="1.0"
                     android:value="@={homeViewModel.size}"
+                    android:layout_marginHorizontal="20dp"
                     app:labelBehavior="gone"
-                    app:tickColorActive="@color/colorAccent"
+                    app:trackColorActive="@color/colorAccent"
                     app:trackColorInactive="@color/primaryBlueHalfOpacity"
                     app:tickColor="@android:color/transparent"
                     app:thumbColor="@color/colorAccent"/>
@@ -78,8 +90,9 @@
                     android:valueTo="1000.0"
                     android:stepSize="10.0"
                     android:value="@={homeViewModel.speed}"
+                    android:layout_marginHorizontal="20dp"
                     app:labelBehavior="gone"
-                    app:tickColorActive="@color/colorAccent"
+                    app:trackColorActive="@color/colorAccent"
                     app:trackColorInactive="@color/primaryBlueHalfOpacity"
                     app:tickColor="@android:color/transparent"
                     app:thumbColor="@color/colorAccent"/>
@@ -89,8 +102,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"/>
-
-
 
             </LinearLayout>
 

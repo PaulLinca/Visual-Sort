@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.github.mikephil.charting.data.BarEntry
 import kotlinx.coroutines.delay
+import ro.lincap.visualsort.util.Constants
 
 class SelectionSort : ISortingAlgorithm
 {
@@ -20,20 +21,20 @@ class SelectionSort : ISortingAlgorithm
             var minimumIndex = currentElement
             for(elementToCompare in currentElement + 1 until (listCopy.size))
             {
-                highlightedValues.postValue(arrayListOf(Pair(elementToCompare.toFloat(), Color.YELLOW), Pair((minimumIndex).toFloat(), Color.GREEN)) + sortedEntries)
+                highlightedValues.postValue(arrayListOf(Pair(elementToCompare.toFloat(), Constants.YELLOW), Pair((minimumIndex).toFloat(), Constants.GREEN)) + sortedEntries)
                 delay(speed.value!!.toLong())
 
                 if(listCopy[minimumIndex].y > listCopy[elementToCompare].y)
                 {
 
-                    highlightedValues.postValue(arrayListOf(Pair((elementToCompare).toFloat(), Color.RED), Pair((minimumIndex).toFloat(), Color.RED)) + sortedEntries)
+                    highlightedValues.postValue(arrayListOf(Pair((elementToCompare).toFloat(), Constants.GREEN), Pair((minimumIndex).toFloat(), Constants.RED)) + sortedEntries)
                     delay(speed.value!!.toLong())
 
                     minimumIndex = elementToCompare
                 }
                 else
                 {
-                    highlightedValues.postValue(arrayListOf(Pair((elementToCompare).toFloat(), Color.GREEN), Pair((minimumIndex).toFloat(), Color.GREEN)) + sortedEntries)
+                    highlightedValues.postValue(arrayListOf(Pair((elementToCompare).toFloat(), Constants.RED), Pair((minimumIndex).toFloat(), Constants.GREEN)) + sortedEntries)
                     delay(speed.value!!.toLong())
                 }
             }
@@ -46,9 +47,9 @@ class SelectionSort : ISortingAlgorithm
             }
 
             listToSort.postValue(listCopy)
-            sortedEntries.add(Pair(currentElement.toFloat(), Color.BLACK))
+            sortedEntries.add(Pair(currentElement.toFloat(), Constants.PURPLE))
             delay(speed.value!!.toLong())
         }
-        highlightedValues.postValue(sortedEntries + Pair(listCopy.lastIndex.toFloat(), Color.BLACK))
+        highlightedValues.postValue(sortedEntries + Pair(listCopy.lastIndex.toFloat(), Constants.PURPLE))
     }
 }
