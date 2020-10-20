@@ -1,11 +1,9 @@
 package ro.lincap.visualsort.presentation.home
 
-import android.graphics.Color
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.github.mikephil.charting.data.BarEntry
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -24,7 +22,7 @@ class HomeViewModel : ViewModel()
     val speed = MutableLiveData(10f)
     val entriesToHighlight = MutableLiveData(listOf<Pair<Float, Int>>())
     val isBusy = MutableLiveData(false)
-    val currentAlgorithm = MutableLiveData("BubbleSort")
+    val currentAlgorithm = MutableLiveData("Bubble Sort")
 
     init
     {
