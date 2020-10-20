@@ -22,4 +22,29 @@
         <item name="trackColorInactive">@color/color_states_trackinactive</item>
     </style>
 
+    <style name="MaterialAlertDialogTheme">
+        <item name="colorSurface">@color/colorPrimary</item>
+        <item name="materialAlertDialogTitlePanelStyle">@style/TitlePaneStyleCenter</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/TitleTextStyleCenter</item>
+        <item name="materialAlertDialogBodyTextStyle">@style/BodyTextStyleCenter</item>
+        <item name="buttonBarStyle">@style/ButtonBarStyle</item>
+    </style>
+    <style name="TitlePaneStyleCenter" parent="MaterialAlertDialog.MaterialComponents.Title.Panel.CenterStacked">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:padding">16dp</item>
+    </style>
+    <style name="TitleTextStyleCenter" parent="MaterialAlertDialog.MaterialComponents.Title.Text.CenterStacked">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+    <style name="BodyTextStyleCenter" parent="MaterialAlertDialog.MaterialComponents.Body.Text">
+        <item name="android:padding">16dp</item>
+        <item name="android:textColor">#c7c7c7</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+    <style name="ButtonBarStyle">
+        <item name="android:background">#000000</item>
+    </style>
+
 </resources>

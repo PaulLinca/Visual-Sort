@@ -1,19 +1,16 @@
 package ro.lincap.visualsort.presentation.home
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.github.mikephil.charting.data.*
+import com.github.mikephil.charting.data.BarData
+import com.github.mikephil.charting.data.BarDataSet
+import com.github.mikephil.charting.data.BarEntry
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.slider.LabelFormatter
 import kotlinx.android.synthetic.main.fragment_home.*
 import ro.lincap.visualsort.R
 import ro.lincap.visualsort.data.model.BubbleSort
@@ -111,47 +108,16 @@ class HomeFragment : Fragment()
         })
     }
 
-    /**
-     * Configures the adapter for the algorithm spinner
-     * Defines the user interaction
+    /*
+    Handles what happens when the "Change algorithm" button is pressed
+    It shows a popup dialog with all the algorithms available for the user to choose from
      */
-//    private fun initAlgorithmSpinner()
-//    {
-//        ArrayAdapter.createFromResource(
-//            requireContext(),
-//            R.array.sorting_algorithms,
-//            android.R.layout.simple_spinner_item)
-//            .also { arrayAdapter ->
-//                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//                algorithmSpinner.adapter = arrayAdapter
-//            }
-//
-//        algorithmSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-//            override fun onNothingSelected(parent: AdapterView<*>?)
-//            {
-//                viewModel.sortingAlgorithm = BubbleSort()
-//            }
-//
-//            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long)
-//            {
-//                val algorithm = parent?.getItemAtPosition(position)
-//                when(algorithm)
-//                {
-//                    getString(R.string.bubble_sort) -> viewModel.sortingAlgorithm = BubbleSort()
-//                    getString(R.string.selection_sort) -> viewModel.sortingAlgorithm = SelectionSort()
-//                }
-//
-//                (activity as AppCompatActivity).supportActionBar?.title = algorithm as String
-//            }
-//        }
-//    }
-
     private fun handleAlgorithmSwitch()
     {
         val items = arrayOf("Bubble Sort", "Selection Sort")
         context?.let {
-            MaterialAlertDialogBuilder(it)
-                .setTitle("Choose an algorithm")
+            MaterialAlertDialogBuilder(it, R.style.MaterialAlertDialogTheme)
+                .setTitle(R.string.choose_algorithm_string)
                 .setItems(items) {dialog, which ->
                     when(which)
                     {
@@ -163,7 +129,6 @@ class HomeFragment : Fragment()
                 .setCancelable(false)
                 .show()
         }
-
     }
 
     /**
