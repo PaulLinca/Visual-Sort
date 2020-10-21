@@ -161,17 +161,17 @@ class HomeFragment : Fragment()
 
     private fun speedIndicatorLabel(speed: Float): String
     {
-        if(speed in 0f..149f)
+        return when (speed)
         {
-            return "Speed: Slow"
-        }
-        else if(speed in 150f..349f)
-        {
-            return "Speed: Normal"
-        }
-        else
-        {
-            return "Speed: Fast"
+            in 0f..149f -> {
+                "Speed: Slow"
+            }
+            in 150f..349f -> {
+                "Speed: Normal"
+            }
+            else -> {
+                "Speed: Fast"
+            }
         }
     }
 }
