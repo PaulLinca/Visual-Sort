@@ -1,6 +1,5 @@
 package ro.lincap.visualsort.data.model
 
-import android.graphics.Color
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.github.mikephil.charting.data.BarEntry
@@ -9,6 +8,11 @@ import ro.lincap.visualsort.util.Constants
 
 class SelectionSort : ISortingAlgorithm
 {
+    override val complexityAverage: String = "O(n^2)"
+    override val complexityBest: String = "O(n^2)"
+    override val complexityWorst: String = "O(n^2)"
+    override val complexitySpaceWorst: String = "O(1)"
+
     override suspend fun sort(listToSort: MutableLiveData<List<BarEntry>>, speed: MutableLiveData<Float>, highlightedValues: MutableLiveData<List<Pair<Float, Int>>>)
     {
         Log.d(this::class.java.canonicalName, "Applying sort")
