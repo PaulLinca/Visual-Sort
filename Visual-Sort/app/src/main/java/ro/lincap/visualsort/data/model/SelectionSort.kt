@@ -26,20 +26,20 @@ class SelectionSort : ISortingAlgorithm
             for(elementToCompare in currentElement + 1 until (listCopy.size))
             {
                 highlightedValues.postValue(arrayListOf(Pair(elementToCompare.toFloat(), Constants.YELLOW), Pair((minimumIndex).toFloat(), Constants.GREEN)) + sortedEntries)
-                delay(speed.value!!.toLong())
+                delay(500 - speed.value!!.toLong() + 1)
 
                 if(listCopy[minimumIndex].y > listCopy[elementToCompare].y)
                 {
 
                     highlightedValues.postValue(arrayListOf(Pair((elementToCompare).toFloat(), Constants.GREEN), Pair((minimumIndex).toFloat(), Constants.RED)) + sortedEntries)
-                    delay(speed.value!!.toLong())
+                    delay(500 - speed.value!!.toLong() + 1)
 
                     minimumIndex = elementToCompare
                 }
                 else
                 {
                     highlightedValues.postValue(arrayListOf(Pair((elementToCompare).toFloat(), Constants.RED), Pair((minimumIndex).toFloat(), Constants.GREEN)) + sortedEntries)
-                    delay(speed.value!!.toLong())
+                    delay(500 - speed.value!!.toLong() + 1)
                 }
             }
 
@@ -52,7 +52,7 @@ class SelectionSort : ISortingAlgorithm
 
             listToSort.postValue(listCopy)
             sortedEntries.add(Pair(currentElement.toFloat(), Constants.PURPLE))
-            delay(speed.value!!.toLong())
+            delay(500 - speed.value!!.toLong() + 1)
         }
         highlightedValues.postValue(sortedEntries + Pair(listCopy.lastIndex.toFloat(), Constants.PURPLE))
     }

@@ -54,7 +54,7 @@ class HomeFragment : Fragment()
         }
 
         speedSlider.setLabelFormatter {
-            "Speed: $it"
+            speedIndicatorLabel(it)
         }
 
         sizeSlider.setLabelFormatter {
@@ -157,5 +157,21 @@ class HomeFragment : Fragment()
         // Redraw the chart
         chart.notifyDataSetChanged()
         chart.invalidate()
+    }
+
+    private fun speedIndicatorLabel(speed: Float): String
+    {
+        if(speed in 0f..149f)
+        {
+            return "Speed: Slow"
+        }
+        else if(speed in 150f..349f)
+        {
+            return "Speed: Normal"
+        }
+        else
+        {
+            return "Speed: Fast"
+        }
     }
 }

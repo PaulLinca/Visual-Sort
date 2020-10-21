@@ -28,7 +28,7 @@ class BubbleSort : ISortingAlgorithm
             for(currentPosition in 0 until (listCopy.size - currentPass - 1))
             {
                 highlightedValues.postValue(arrayListOf(Pair(currentPosition.toFloat(), Constants.YELLOW), Pair((currentPosition + 1).toFloat(), Constants.YELLOW)) + sortedEntries)
-                delay(speed.value!!.toLong())
+                delay(500 - speed.value!!.toLong() + 1)
 
                 if(listCopy[currentPosition].y > listCopy[currentPosition + 1].y)
                 {
@@ -46,7 +46,7 @@ class BubbleSort : ISortingAlgorithm
                 }
 
                 listToSort.postValue(listCopy)
-                delay(speed.value!!.toLong())
+                delay(500 - speed.value!!.toLong() + 1)
 
             }
 
@@ -58,7 +58,7 @@ class BubbleSort : ISortingAlgorithm
                     allEntriesSorted.add(Pair(index.toFloat(), Constants.PURPLE))
                 }
                 highlightedValues.postValue(allEntriesSorted)
-                delay(speed.value!!.toLong())
+                delay(500 - speed.value!!.toLong() + 1)
 
                 break
             }

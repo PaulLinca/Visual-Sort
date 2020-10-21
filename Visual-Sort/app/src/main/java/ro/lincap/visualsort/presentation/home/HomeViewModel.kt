@@ -19,7 +19,7 @@ class HomeViewModel : ViewModel()
     val entries: LiveData<List<BarEntry>>
         get() = _entries
     val size = MutableLiveData(50f)
-    val speed = MutableLiveData(10f)
+    val speed = MutableLiveData(100f)
     val entriesToHighlight = MutableLiveData(listOf<Pair<Float, Int>>())
     val isBusy = MutableLiveData(false)
     val currentAlgorithm = MutableLiveData("Bubble Sort")
