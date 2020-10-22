@@ -64,4 +64,6 @@ dependencies {
     // Material Components
     implementation "com.google.android.material:material:$material_version"
 
+    // Better dialog
+    implementation 'com.afollestad.material-dialogs:core:3.3.0'
 }
