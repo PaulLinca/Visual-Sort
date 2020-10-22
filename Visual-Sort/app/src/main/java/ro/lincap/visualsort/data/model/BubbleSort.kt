@@ -8,10 +8,13 @@ import ro.lincap.visualsort.util.Constants
 
 class BubbleSort : ISortingAlgorithm
 {
+    override val properName : String = "Bubble Sort"
+    override val description : String = "Description"
+
     override val complexityAverage: String = "O(n^2)"
     override val complexityBest: String = "O(n)"
     override val complexityWorst: String = "O(n^2)"
-    override val complexitySpaceWorst: String = "O(1)"
+    override val complexitySpace: String = "O(1)"
 
     override suspend fun sort(listToSort: MutableLiveData<List<BarEntry>>, speed: MutableLiveData<Float>, highlightedValues: MutableLiveData<List<Pair<Float, Int>>>)
     {
