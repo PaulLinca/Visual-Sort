@@ -16,9 +16,9 @@
             android:id="@+id/dialog_algorithmName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:paddingHorizontal="3dp"
             android:paddingVertical="15dp"
-            android:layout_gravity="center_horizontal"
             android:gravity="center"
             android:textColor="@android:color/white"
             android:textSize="18sp"
@@ -30,7 +30,7 @@
             android:background="@color/primaryBlue"/>
 
         <ScrollView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="3dp"
             android:paddingVertical="5dp">
@@ -44,37 +44,124 @@
                     android:id="@+id/dialog_algorithmDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:textSize="16sp"
                     android:textColor="@android:color/white"/>
 
-                <TextView
-                    android:id="@+id/dialog_algorithmComplexityAverage"
+                <TableLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textColor="@android:color/white"/>
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="70dp">
 
-                <TextView
-                    android:id="@+id/dialog_algorithmComplexityBest"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textColor="@android:color/white"/>
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:paddingVertical="5dp"
+                            android:text="Complexity"
+                            android:textSize="16sp"
+                            android:textColor="@android:color/white"
+                            android:background="@drawable/cell_shape"/>
 
-                <TextView
-                    android:id="@+id/dialog_algorithmComplexityWorst"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textColor="@android:color/white"/>
+                    </TableRow>
 
-                <TextView
-                    android:id="@+id/dialog_algorithmComplexitySpace"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textColor="@android:color/white"/>
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:paddingVertical="5dp"
+                            android:text="Average"
+                            android:textSize="16sp"
+                            android:textColor="@android:color/white"
+                            android:background="@drawable/cell_shape"/>
+                        <TextView
+                            android:id="@+id/dialog_algorithmComplexityAverage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:paddingVertical="5dp"
+                            android:textSize="16sp"
+                            android:textColor="@android:color/white"
+                            android:background="@drawable/cell_shape"/>
+                    </TableRow>
 
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:paddingVertical="5dp"
+                            android:text="Best"
+                            android:textSize="16sp"
+                            android:textColor="@android:color/white"
+                            android:background="@drawable/cell_shape"/>
+                        <TextView
+                            android:id="@+id/dialog_algorithmComplexityBest"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:paddingVertical="5dp"
+                            android:textSize="16sp"
+                            android:textColor="@android:color/white"
+                            android:background="@drawable/cell_shape"/>
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:paddingVertical="5dp"
+                            android:text="Worst"
+                            android:textSize="16sp"
+                            android:textColor="@android:color/white"
+                            android:background="@drawable/cell_shape"/>
+                        <TextView
+                            android:id="@+id/dialog_algorithmComplexityWorst"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:paddingVertical="5dp"
+                            android:textSize="16sp"
+                            android:textColor="@android:color/white"
+                            android:background="@drawable/cell_shape"/>
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:paddingVertical="5dp"
+                            android:text="Space"
+                            android:textSize="16sp"
+                            android:textColor="@android:color/white"
+                            android:background="@drawable/cell_shape"/>
+                        <TextView
+                            android:id="@+id/dialog_algorithmComplexitySpace"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:paddingVertical="5dp"
+                            android:textSize="16sp"
+                            android:textColor="@android:color/white"
+                            android:background="@drawable/cell_shape"/>
+                    </TableRow>
+
+                </TableLayout>
             </LinearLayout>
 
         </ScrollView>
