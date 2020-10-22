@@ -7,11 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.customview.customView
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.info_dialog.*
 import ro.lincap.visualsort.R
 import ro.lincap.visualsort.data.model.BubbleSort
 import ro.lincap.visualsort.data.model.SelectionSort
@@ -51,6 +54,10 @@ class HomeFragment : Fragment()
 
         changeAlgorithmButton.setOnClickListener {
             handleAlgorithmSwitch()
+        }
+
+        infoButton.setOnClickListener {
+            showAlgorithmInfo()
         }
 
         speedSlider.setLabelFormatter {
@@ -118,7 +125,7 @@ class HomeFragment : Fragment()
         context?.let {
             MaterialAlertDialogBuilder(it, R.style.MaterialAlertDialogTheme)
                 .setTitle(R.string.choose_algorithm_string)
-                .setItems(items) {dialog, which ->
+                .setItems(items) { _, which ->
                     when(which)
                     {
                         0 -> viewModel.sortingAlgorithm = BubbleSort()
@@ -172,6 +179,29 @@ class HomeFragment : Fragment()
             else -> {
                 "Speed: Fast"
             }
+        }
+    }
+
+    private fun showAlgorithmInfo()
+    {
+        val algorithm = viewModel.sortingAlgorithm
+        val algorithmInfoDialog = context?.let {
+            MaterialDialog(it)
+                .noAutoDismiss()
+                .cornerRadius(10f)
+                .customView(R.layout.info_dialog)
+        }
+        algorithmInfoDialog.also {
+            it?.dialog_algorithmName?.text = algorithm.properName
+            it?.dialog_algorithmDescription?.text = algorithm.description
+            it?.dialog_algorithmComplexityAverage?.text = algorithm.complexityAverage
+            it?.dialog_algorithmComplexityBest?.text = algorithm.complexityBest
+            it?.dialog_algorithmComplexityWorst?.text = algorithm.complexityWorst
+            it?.dialog_algorithmComplexitySpace?.text = algorithm.complexitySpace
+            it?.dismissButton?.setOnClickListener {
+                algorithmInfoDialog?.dismiss()
+            }
+            it?.show()
         }
     }
 }
