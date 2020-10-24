@@ -25,7 +25,7 @@ class HomeFragment : Fragment()
 {
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var binding: FragmentHomeBinding
-    private val barChartColors: IntArray = IntArray(100) { Constants.BLUE}
+    private val barChartColors: IntArray = IntArray(101) { Constants.BLUE}
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
