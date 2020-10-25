@@ -11,10 +11,10 @@ class BubbleSort : ISortingAlgorithm
     override val properName : String = "Bubble Sort"
     override val description : String = "Bubble sort is one of the simplest sorting algorithms. It works by repeatedly iterating through the list, comparing adjacent elements and swapping them if they are in the wrong order. While it doesn't have a great performance, it is more efficiently used as an educational tool."
 
-    override val complexityAverage: String = "O(n^2)"
-    override val complexityBest: String = "O(n)"
-    override val complexityWorst: String = "O(n^2)"
-    override val complexitySpace: String = "O(1)"
+    override val complexityAverage: String = "n^2"
+    override val complexityBest: String = "n"
+    override val complexityWorst: String = "n^2"
+    override val complexitySpace: String = "1"
 
     override suspend fun sort(listToSort: MutableLiveData<List<BarEntry>>, speed: MutableLiveData<Float>, highlightedValues: MutableLiveData<List<Pair<Float, Int>>>)
     {

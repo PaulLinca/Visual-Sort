@@ -11,10 +11,10 @@ class SelectionSort : ISortingAlgorithm
     override val properName : String = "Selection Sort"
     override val description : String = "Selection sort divides the input list into two sublists. The algorithm repeatedly iterates through the second, unsorted sublist, finds the minimum element and swaps it with the leftmost unsorted element, moving the sublist boundaries one element to the right."
 
-    override val complexityAverage: String = "O(n^2)"
-    override val complexityBest: String = "O(n^2)"
-    override val complexityWorst: String = "O(n^2)"
-    override val complexitySpace: String = "O(1)"
+    override val complexityAverage: String = "n^2"
+    override val complexityBest: String = "n^2"
+    override val complexityWorst: String = "n^2"
+    override val complexitySpace: String = "1"
 
     override suspend fun sort(listToSort: MutableLiveData<List<BarEntry>>, speed: MutableLiveData<Float>, highlightedValues: MutableLiveData<List<Pair<Float, Int>>>)
     {

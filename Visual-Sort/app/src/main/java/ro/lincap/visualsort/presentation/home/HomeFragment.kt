@@ -1,9 +1,12 @@
 package ro.lincap.visualsort.presentation.home
 
 import android.os.Bundle
+import android.text.Html
+import android.text.Spanned
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.toSpanned
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -194,14 +197,25 @@ class HomeFragment : Fragment()
         algorithmInfoDialog.also {
             it?.dialog_algorithmName?.text = algorithm.properName
             it?.dialog_algorithmDescription?.text = algorithm.description
-            it?.dialog_algorithmComplexityAverage?.text = algorithm.complexityAverage
-            it?.dialog_algorithmComplexityBest?.text = algorithm.complexityBest
-            it?.dialog_algorithmComplexityWorst?.text = algorithm.complexityWorst
-            it?.dialog_algorithmComplexitySpace?.text = algorithm.complexitySpace
+            it?.dialog_algorithmComplexityAverage?.text = getExponentialExpressionFormat(algorithm.complexityAverage)
+            it?.dialog_algorithmComplexityBest?.text = getExponentialExpressionFormat(algorithm.complexityBest)
+            it?.dialog_algorithmComplexityWorst?.text = getExponentialExpressionFormat(algorithm.complexityWorst)
+            it?.dialog_algorithmComplexitySpace?.text = getExponentialExpressionFormat(algorithm.complexitySpace)
             it?.dismissButton?.setOnClickListener {
                 algorithmInfoDialog?.dismiss()
             }
             it?.show()
         }
+    }
+
+    private fun getExponentialExpressionFormat(originalString: String): Spanned?
+    {
+        val splitString = originalString.split("^")
+        if(splitString.size == 1)
+        {
+            return "O(${splitString[0]})".toSpanned()
+        }
+
+        return Html.fromHtml("O(${splitString[0]}<sup>${splitString[1]}</sup>)")
     }
 }
