@@ -20,6 +20,8 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.info_dialog.*
 import ro.lincap.visualsort.R
 import ro.lincap.visualsort.data.model.BubbleSort
+import ro.lincap.visualsort.data.model.MergeSort
+import ro.lincap.visualsort.data.model.QuickSort
 import ro.lincap.visualsort.data.model.SelectionSort
 import ro.lincap.visualsort.databinding.FragmentHomeBinding
 import ro.lincap.visualsort.util.Constants
@@ -124,7 +126,7 @@ class HomeFragment : Fragment()
      */
     private fun handleAlgorithmSwitch()
     {
-        val items = arrayOf("Bubble Sort", "Selection Sort")
+        val items = arrayOf("Bubble Sort", "Selection Sort", "Quicksort")
         context?.let {
             MaterialAlertDialogBuilder(it, R.style.MaterialAlertDialogTheme)
                 .setTitle(R.string.choose_algorithm_string)
@@ -133,6 +135,7 @@ class HomeFragment : Fragment()
                     {
                         0 -> viewModel.sortingAlgorithm = BubbleSort()
                         1 -> viewModel.sortingAlgorithm = SelectionSort()
+                        2 -> viewModel.sortingAlgorithm = QuickSort()
                     }
                     viewModel.currentAlgorithm.value = items[which]
                 }
