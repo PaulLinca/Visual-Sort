@@ -11,6 +11,7 @@
     <color name="primaryRed">#ed6663</color>
     <color name="primaryYellow">#ffe05d</color>
     <color name="primaryGreen">#b8de6f</color>
+    <color name="primaryOrange">#FF965D</color>
 
     <color name="buttonEnabled">#ffffff</color>
     <color name="buttonDisabled">#7fffffff</color>
@@ -20,4 +21,7 @@
 
     <color name="trackInactiveEnabled">#7fffffff</color>
     <color name="trackInactiveDisabled">#2FFFFFFF</color>
+
+    <color name="primaryTextColor">#FFFFFF</color>
+    <color name="secondaryTextColor">#7F7F7F</color>
 </resources>
