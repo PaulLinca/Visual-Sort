@@ -22,6 +22,7 @@ class QuickSort: ISortingAlgorithm
     {
         Log.d(this::class.java.canonicalName, "Applying sort")
 
+        sortedEntries.clear()
         quicksort(listToSort, 0, listToSort.value!!.lastIndex, speed, highlightedValues)
     }
 
@@ -30,9 +31,14 @@ class QuickSort: ISortingAlgorithm
         if(low < high)
         {
             val partitioningIndex = partition(listToSort, low, high, speed, highlightedValues)
+            sortedEntries.add(Pair(partitioningIndex.toFloat(), Constants.PURPLE))
 
             quicksort(listToSort, low, partitioningIndex - 1, speed, highlightedValues)
             quicksort(listToSort, partitioningIndex + 1, high, speed, highlightedValues)
+        }
+        else
+        {
+            sortedEntries.add(Pair(low.toFloat(), Constants.PURPLE))
         }
     }
 
@@ -42,19 +48,30 @@ class QuickSort: ISortingAlgorithm
 
         val pivot = listCopy[high]
         var smallerIndex = low - 1
+
         for(index in low until high)
         {
+            highlightedValues.postValue(arrayListOf(Pair((pivot.x), Constants.GREEN), Pair(smallerIndex + 1f, Constants.YELLOW), Pair(index.toFloat(), Constants.YELLOW)) + sortedEntries)
+            delay(500 - speed.value!!.toLong() + 1)
+
             if(listCopy[index].y < pivot.y)
             {
+                highlightedValues.postValue(arrayListOf(Pair((pivot.x), Constants.RED), Pair(smallerIndex + 1f, Constants.YELLOW), Pair(index.toFloat(), Constants.RED)) + sortedEntries)
+                delay(500 - speed.value!!.toLong() + 1)
+
                 smallerIndex++
+
 
                 val temp = listCopy[smallerIndex].y
                 listCopy[smallerIndex].y = listCopy[index].y
                 listCopy[index].y = temp
 
-                listToSort.postValue(listCopy)
+                highlightedValues.postValue(arrayListOf(Pair((pivot.x), Constants.GREEN), Pair(smallerIndex + 1f, Constants.YELLOW), Pair(index.toFloat(), Constants.YELLOW)) + sortedEntries)
                 delay(500 - speed.value!!.toLong() + 1)
             }
+
+            listToSort.postValue(listCopy)
+            delay(500 - speed.value!!.toLong() + 1)
         }
 
         val temp = listCopy[smallerIndex + 1].y
@@ -63,6 +80,8 @@ class QuickSort: ISortingAlgorithm
 
         listToSort.postValue(listCopy)
         delay(500 - speed.value!!.toLong() + 1)
+
+        highlightedValues.postValue(sortedEntries)
 
         return smallerIndex + 1
     }
