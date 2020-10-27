@@ -3,6 +3,7 @@ package ro.lincap.visualsort.presentation.home
 import android.os.Bundle
 import android.text.Html
 import android.text.Spanned
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +26,7 @@ import ro.lincap.visualsort.data.model.QuickSort
 import ro.lincap.visualsort.data.model.SelectionSort
 import ro.lincap.visualsort.databinding.FragmentHomeBinding
 import ro.lincap.visualsort.util.Constants
+import java.lang.IndexOutOfBoundsException
 
 class HomeFragment : Fragment()
 {
@@ -157,7 +159,14 @@ class HomeFragment : Fragment()
         val colors = barChartColors.take(viewModel.size.value!!.toInt() + 1).toMutableList()
         for(index in viewModel.entriesToHighlight.value!!)
         {
-            colors[index.first.toInt()] = index.second
+            try 
+            {
+                colors[index.first.toInt()] = index.second
+            }
+            catch (e: IndexOutOfBoundsException)
+            {
+                Log.w(this::class.java.canonicalName, e.message)
+            }
         }
         dataSet.colors = colors
 
