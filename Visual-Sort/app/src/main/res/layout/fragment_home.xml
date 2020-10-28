@@ -21,7 +21,7 @@
             android:orientation="vertical"
             android:paddingTop="0dp"
             android:layout_marginTop="0dp"
-            android:background="@color/colorPrimaryLight">
+            android:background="@color/primaryBackgroundColor">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -67,14 +67,14 @@
                 android:id="@+id/chart"
                 android:layout_width="match_parent"
                 android:layout_height="500dp"
-                android:background="@color/colorPrimary"/>
+                android:background="@color/primaryBackgroundColor"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingTop="10dp"
-                android:background="@color/colorPrimaryLight">
+                android:background="@color/secondaryBackgroundColor">
 
                 <com.google.android.material.button.MaterialButton
                     style="@style/MaterialButtonStyle"
@@ -87,7 +87,7 @@
                     android:enabled="@{!homeViewModel.isBusy}"
                     android:text="Visualize"
                     android:textSize="17sp"
-                    android:backgroundTint="@color/colorPrimaryLight"
+                    android:backgroundTint="@color/secondaryBackgroundColor"
                     app:strokeWidth="1dp"
                     app:cornerRadius="10dp"
                     app:elevation="0dp"
@@ -100,7 +100,7 @@
                     android:layout_gravity="center_horizontal"
                     android:enabled="@{!homeViewModel.isBusy}"
                     android:text="Shuffle values"
-                    android:backgroundTint="@color/colorPrimaryLight"
+                    android:backgroundTint="@color/secondaryBackgroundColor"
                     app:strokeWidth="1dp"
                     app:cornerRadius="10dp"
                     android:onClick="@{() -> homeViewModel.populateChartData()}"/>
@@ -140,7 +140,7 @@
                     android:layout_gravity="center_horizontal"
                     android:enabled="@{!homeViewModel.isBusy}"
                     android:text="Change algorithm"
-                    android:backgroundTint="@color/colorPrimaryLight"
+                    android:backgroundTint="@color/secondaryBackgroundColor"
                     app:strokeWidth="1dp"
                     app:cornerRadius="10dp"/>
 

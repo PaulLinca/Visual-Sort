@@ -1,27 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#1f242b</color>
-    <color name="colorPrimaryDark">#1f242b</color>
-    <color name="colorAccent">#28abb9</color>
+    <color name="colorPrimary">@color/primaryDarkBlue</color>
+    <color name="colorPrimaryDark">@color/primaryDarkBlue</color>
+    <color name="colorAccent">@color/primaryTurquoise</color>
 
-    <color name="colorPrimaryLight">#29303a</color>
+    <!--Black & White-->
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="gray">#7f7f7f</color>
 
-    <color name="primaryBlue">#28abb9</color>
+    <color name="whiteHalfOpacity">#7fffffff</color>
+    <color name="whiteQuarterOpacity">#2FFFFFFF</color>
+
+    <!--App color palette-->
+    <color name="primaryDarkBlue">#1f242b</color>
+    <color name="secondaryDarkBlue">#29303a</color>
+    <color name="primaryTurquoise">#28abb9</color>
+
+    <!--Chart colors-->
+    <color name="primaryBlue">@color/primaryTurquoise</color>
     <color name="primaryBlueHalfOpacity">#7f28abb9</color>
     <color name="primaryRed">#ed6663</color>
     <color name="primaryYellow">#ffe05d</color>
     <color name="primaryGreen">#b8de6f</color>
     <color name="primaryOrange">#FF965D</color>
 
-    <color name="buttonEnabled">#ffffff</color>
-    <color name="buttonDisabled">#7fffffff</color>
+    <!--Controls colors-->
+    <color name="primaryBackgroundColor">@color/primaryDarkBlue</color>
+    <color name="secondaryBackgroundColor">@color/secondaryDarkBlue</color>
 
-    <color name="trackActiveEnabled">#ffffff</color>
-    <color name="trackActiveDisabled">#7fffffff</color>
+    <color name="buttonEnabled">@color/white</color>
+    <color name="buttonDisabled">@color/whiteHalfOpacity</color>
 
-    <color name="trackInactiveEnabled">#7fffffff</color>
-    <color name="trackInactiveDisabled">#2FFFFFFF</color>
+    <color name="trackActiveEnabled">@color/white</color>
+    <color name="trackActiveDisabled">@color/whiteHalfOpacity</color>
 
-    <color name="primaryTextColor">#FFFFFF</color>
-    <color name="secondaryTextColor">#7F7F7F</color>
+    <color name="trackInactiveEnabled">@color/whiteHalfOpacity</color>
+    <color name="trackInactiveDisabled">@color/whiteQuarterOpacity</color>
+
+    <color name="primaryTextColor">@color/white</color>
+    <color name="secondaryTextColor">@color/gray</color>
 </resources>
