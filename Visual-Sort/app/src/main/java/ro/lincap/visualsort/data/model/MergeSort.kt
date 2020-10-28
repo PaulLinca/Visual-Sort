@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.github.mikephil.charting.data.BarEntry
 import kotlinx.coroutines.delay
+import ro.lincap.visualsort.util.Constants
 
 class MergeSort : ISortingAlgorithm
 {
@@ -15,32 +16,43 @@ class MergeSort : ISortingAlgorithm
     override val complexityWorst: String = "n log(n)"
     override val complexitySpace: String = "n"
 
+    private val sortedEntries = arrayListOf<Pair<Float, Int>>()
+    private var isLastMerge = false
+
     override suspend fun sort(listToSort: MutableLiveData<List<BarEntry>>, speed: MutableLiveData<Float>, highlightedValues: MutableLiveData<List<Pair<Float, Int>>>)
     {
         Log.d(this::class.java.canonicalName, "Applying sort")
 
-        mergeSort(listToSort, 0, listToSort.value!!.lastIndex, speed)
+        sortedEntries.clear()
+        isLastMerge = false
+        mergeSort(listToSort, 0, listToSort.value!!.lastIndex, speed, highlightedValues)
+        highlightedValues.postValue(sortedEntries)
     }
 
-    private suspend fun mergeSort(listToSort: MutableLiveData<List<BarEntry>>, leftBound: Int, rightBound: Int, speed: MutableLiveData<Float>)
+    private suspend fun mergeSort(listToSort: MutableLiveData<List<BarEntry>>, leftBound: Int, rightBound: Int, speed: MutableLiveData<Float>, highlightedValues: MutableLiveData<List<Pair<Float, Int>>>)
     {
         if(leftBound < rightBound)
         {
             val middle = (leftBound + rightBound) / 2
 
-            mergeSort(listToSort, leftBound, middle, speed)
-            mergeSort(listToSort, middle + 1, rightBound, speed)
+            mergeSort(listToSort, leftBound, middle, speed, highlightedValues)
+            mergeSort(listToSort, middle + 1, rightBound, speed, highlightedValues)
 
-            merge(listToSort, leftBound, middle, rightBound, speed)
+            merge(listToSort, leftBound, middle, rightBound, speed, highlightedValues)
         }
     }
 
-    private suspend fun merge(listToSort: MutableLiveData<List<BarEntry>>, leftBound: Int, middleBound: Int, rightBound: Int, speed: MutableLiveData<Float>)
+    private suspend fun merge(listToSort: MutableLiveData<List<BarEntry>>, leftBound: Int, middleBound: Int, rightBound: Int, speed: MutableLiveData<Float>, highlightedValues: MutableLiveData<List<Pair<Float, Int>>>)
     {
         val listCopy = listToSort.value!!
 
         val leftSublistSize = middleBound - leftBound + 1
         val rightSublistSize = rightBound - middleBound
+
+        if(leftSublistSize + rightSublistSize == listCopy.size)
+        {
+            isLastMerge = true
+        }
 
         val tempLeftSublist = arrayListOf<Float>()
         val tempRightSublist = arrayListOf<Float>()
@@ -69,6 +81,12 @@ class MergeSort : ISortingAlgorithm
                 listCopy[k].y = tempRightSublist[j]
                 j++
             }
+
+            if(isLastMerge)
+            {
+                sortedEntries.add(Pair(k.toFloat(), Constants.PURPLE))
+            }
+            highlightedValues.postValue(sortedEntries + arrayListOf(Pair(k.toFloat(), Constants.YELLOW)))
             k++
 
             listToSort.postValue(listCopy)
@@ -79,6 +97,12 @@ class MergeSort : ISortingAlgorithm
         {
             listCopy[k].y = tempLeftSublist[i]
             i++
+
+            if(isLastMerge)
+            {
+                sortedEntries.add(Pair(k.toFloat(), Constants.PURPLE))
+            }
+            highlightedValues.postValue(sortedEntries + arrayListOf(Pair(k.toFloat(), Constants.YELLOW)))
             k++
 
             listToSort.postValue(listCopy)
@@ -89,13 +113,16 @@ class MergeSort : ISortingAlgorithm
         {
             listCopy[k].y = tempRightSublist[j]
             j++
+
+            if(isLastMerge)
+            {
+                sortedEntries.add(Pair(k.toFloat(), Constants.PURPLE))
+            }
+            highlightedValues.postValue(sortedEntries + arrayListOf(Pair(k.toFloat(), Constants.YELLOW)))
             k++
 
             listToSort.postValue(listCopy)
             delay(500 - speed.value!!.toLong() + 1)
         }
-
-        listToSort.postValue(listCopy)
-        delay(500 - speed.value!!.toLong() + 1)
     }
 }
