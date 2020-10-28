@@ -159,7 +159,7 @@ class HomeFragment : Fragment()
         val colors = barChartColors.take(viewModel.size.value!!.toInt() + 1).toMutableList()
         for(index in viewModel.entriesToHighlight.value!!)
         {
-            try 
+            try
             {
                 colors[index.first.toInt()] = index.second
             }

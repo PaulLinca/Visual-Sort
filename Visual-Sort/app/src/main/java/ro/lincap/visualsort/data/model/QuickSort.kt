@@ -50,7 +50,7 @@ class QuickSort: ISortingAlgorithm
         var smallerIndex = low - 1
         for(index in low until high)
         {
-            highlightedValues.postValue(arrayListOf(Pair((pivot.x), Constants.GREEN), Pair(smallerIndex + 1f, Constants.YELLOW), Pair(index.toFloat(), Constants.ORANGE)) + sortedEntries)
+            highlightedValues.postValue(arrayListOf(Pair((pivot.x), Constants.GREEN), Pair(index.toFloat(), Constants.ORANGE), Pair(smallerIndex + 1f, Constants.YELLOW)) + sortedEntries)
             delay(500 - speed.value!!.toLong() + 1)
 
             if(listCopy[index].y < pivot.y)
@@ -65,7 +65,7 @@ class QuickSort: ISortingAlgorithm
                 listCopy[smallerIndex].y = listCopy[index].y
                 listCopy[index].y = temp
 
-                highlightedValues.postValue(arrayListOf(Pair((pivot.x), Constants.GREEN), Pair(smallerIndex + 1f, Constants.YELLOW), Pair(index.toFloat(), Constants.ORANGE)) + sortedEntries)
+                highlightedValues.postValue(arrayListOf(Pair((pivot.x), Constants.GREEN), Pair(index.toFloat(), Constants.ORANGE), Pair(smallerIndex + 1f, Constants.YELLOW)) + sortedEntries)
                 delay(500 - speed.value!!.toLong() + 1)
             }
 
