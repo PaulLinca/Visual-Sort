@@ -2,12 +2,7 @@
     <string name="app_name">Visual Sort</string>
 
     <string name="choose_algorithm_string">Choose algorithm</string>
-
-    <string name="bubble_sort">Bubble Sort</string>
-    <string name="selection_sort">Selection Sort</string>
-
-    <string-array name="sorting_algorithms">
-        <item>Bubble Sort</item>
-        <item>Selection Sort</item>
-    </string-array>
+    <string name="change_algorithm_string">Change algorithm</string>
+    <string name="visualize_string">Visualize</string>
+    <string name="shuffle_values_string">Shuffle values</string>
 </resources>

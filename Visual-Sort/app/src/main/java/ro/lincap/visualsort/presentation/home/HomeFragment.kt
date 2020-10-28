@@ -128,7 +128,7 @@ class HomeFragment : Fragment()
      */
     private fun handleAlgorithmSwitch()
     {
-        val items = arrayOf("Bubble Sort", "Selection Sort", "Quicksort")
+        val items = arrayOf(Constants.BUBBLESORT, Constants.SELECTIONSORT, Constants.QUICKSORT)
         context?.let {
             MaterialAlertDialogBuilder(it, R.style.MaterialAlertDialogTheme)
                 .setTitle(R.string.choose_algorithm_string)
