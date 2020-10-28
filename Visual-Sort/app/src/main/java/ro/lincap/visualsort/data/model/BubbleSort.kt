@@ -50,7 +50,6 @@ class BubbleSort : ISortingAlgorithm
 
                 listToSort.postValue(listCopy)
                 delay(500 - speed.value!!.toLong() + 1)
-
             }
 
             if(!keepGoing)
