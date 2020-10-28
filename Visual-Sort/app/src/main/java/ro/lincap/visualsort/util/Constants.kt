@@ -13,8 +13,8 @@ class Constants
         val PURPLE = Color.parseColor("#794c74")
         val ORANGE = Color.parseColor("#FF965D")
 
-        val BUBBLESORT = "Bubble Sort"
-        val SELECTIONSORT = "Selection Sort"
-        val QUICKSORT = "Quicksort"
+        const val BUBBLESORT = "Bubble Sort"
+        const val SELECTIONSORT = "Selection Sort"
+        const val QUICKSORT = "Quicksort"
     }
 }
