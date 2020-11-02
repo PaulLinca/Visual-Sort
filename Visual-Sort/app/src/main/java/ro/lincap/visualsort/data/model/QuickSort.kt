@@ -14,7 +14,7 @@ class QuickSort: ISortingAlgorithm
     override val complexityAverage: String = "n log(n)"
     override val complexityBest: String = "n log(n)"
     override val complexityWorst: String = "n^2"
-    override val complexitySpace: String = "n"
+    override val complexitySpace: String = "log n"
 
     private val sortedEntries = arrayListOf<Pair<Float, Int>>()
 
