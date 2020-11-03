@@ -33,7 +33,6 @@ class SelectionSort : ISortingAlgorithm
 
                 if(listCopy[minimumIndex].y > listCopy[elementToCompare].y)
                 {
-
                     highlightedValues.postValue(arrayListOf(Pair((elementToCompare).toFloat(), Constants.GREEN), Pair((minimumIndex).toFloat(), Constants.RED)) + sortedEntries)
                     delay(500 - speed.value!!.toLong() + 1)
 

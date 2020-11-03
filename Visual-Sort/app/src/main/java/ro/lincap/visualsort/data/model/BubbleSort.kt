@@ -38,8 +38,8 @@ class BubbleSort : ISortingAlgorithm
                     highlightedValues.postValue(arrayListOf(Pair(currentPosition.toFloat(), Constants.RED), Pair((currentPosition + 1).toFloat(), Constants.RED)) + sortedEntries)
 
                     val temp = listCopy[currentPosition].y
-                    listCopy[currentPosition].y = listCopy[currentPosition+1].y
-                    listCopy[currentPosition+1].y = temp
+                    listCopy[currentPosition].y = listCopy[currentPosition + 1].y
+                    listCopy[currentPosition + 1].y = temp
 
                     keepGoing = true
                 }
