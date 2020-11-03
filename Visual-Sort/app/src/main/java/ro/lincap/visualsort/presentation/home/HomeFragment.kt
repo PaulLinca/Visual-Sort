@@ -20,10 +20,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.info_dialog.*
 import ro.lincap.visualsort.R
-import ro.lincap.visualsort.data.model.BubbleSort
-import ro.lincap.visualsort.data.model.MergeSort
-import ro.lincap.visualsort.data.model.QuickSort
-import ro.lincap.visualsort.data.model.SelectionSort
+import ro.lincap.visualsort.data.model.*
 import ro.lincap.visualsort.databinding.FragmentHomeBinding
 import ro.lincap.visualsort.util.Constants
 import java.lang.IndexOutOfBoundsException
@@ -128,7 +125,7 @@ class HomeFragment : Fragment()
      */
     private fun handleAlgorithmSwitch()
     {
-        val items = arrayOf(Constants.BUBBLESORT, Constants.SELECTIONSORT, Constants.QUICKSORT, Constants.MERGESORT)
+        val items = arrayOf(Constants.BUBBLESORT, Constants.SELECTIONSORT, Constants.QUICKSORT, Constants.MERGESORT, Constants.INSERTIONSORT)
         context?.let {
             MaterialAlertDialogBuilder(it, R.style.MaterialAlertDialogTheme)
                 .setTitle(R.string.choose_algorithm_string)
@@ -139,6 +136,7 @@ class HomeFragment : Fragment()
                         1 -> viewModel.sortingAlgorithm = SelectionSort()
                         2 -> viewModel.sortingAlgorithm = QuickSort()
                         3 -> viewModel.sortingAlgorithm = MergeSort()
+                        4 -> viewModel.sortingAlgorithm = InsertionSort()
                     }
                     viewModel.currentAlgorithm.value = items[which]
                 }

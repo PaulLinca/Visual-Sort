@@ -17,5 +17,6 @@ class Constants
         const val SELECTIONSORT = "Selection Sort"
         const val QUICKSORT = "Quicksort"
         const val MERGESORT = "Merge Sort"
+        const val INSERTIONSORT = "Insertion Sort"
     }
 }
