@@ -8,7 +8,7 @@ import ro.lincap.visualsort.util.Constants
 
 class InsertionSort : ISortingAlgorithm
 {
-    override val properName : String = "Insertion Sort"
+    override val properName : String = Constants.INSERTIONSORT
     override val description : String = "The list is split into a sorted and an unsorted part. Values from the unsorted part are picked and moved to the correct position in the sorted part."
 
     override val complexityAverage: String = "n^2"

@@ -8,7 +8,7 @@ import ro.lincap.visualsort.util.Constants
 
 class BubbleSort : ISortingAlgorithm
 {
-    override val properName : String = "Bubble Sort"
+    override val properName : String = Constants.BUBBLESORT
     override val description : String = "Bubble sort is one of the simplest sorting algorithms. It works by repeatedly iterating through the list, comparing adjacent elements and swapping them if they are in the wrong order. While it doesn't have a great performance, it is more efficiently used as an educational tool."
 
     override val complexityAverage: String = "n^2"

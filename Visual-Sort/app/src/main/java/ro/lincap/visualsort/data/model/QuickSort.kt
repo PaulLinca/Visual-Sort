@@ -8,7 +8,7 @@ import ro.lincap.visualsort.util.Constants
 
 class QuickSort: ISortingAlgorithm
 {
-    override val properName : String = "Quicksort"
+    override val properName : String = Constants.QUICKSORT
     override val description : String = "Quicksort is a divide-and-conquer algorithm that selects a \"pivot\" element and partitions the other elements into two sublists, one having elements lesser than the pivot, the other having elements greater than the pivot. Upon partitioning, the pivot will be placed between them, giving it its final ordered position. The two sublists are then sorted recursively using the same technique."
 
     override val complexityAverage: String = "n log(n)"

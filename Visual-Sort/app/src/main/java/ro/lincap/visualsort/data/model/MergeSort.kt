@@ -8,7 +8,7 @@ import ro.lincap.visualsort.util.Constants
 
 class MergeSort : ISortingAlgorithm
 {
-    override val properName : String = "Merge Sort"
+    override val properName : String = Constants.MERGESORT
     override val description : String = "Merge sort is a Divide and Conquer sorting algorithm. It works by recursively dividing the list of elements into two equal sublists and them combining them in a sorted manner."
 
     override val complexityAverage: String = "n log(n)"
