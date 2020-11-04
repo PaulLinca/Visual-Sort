@@ -8,8 +8,8 @@ import ro.lincap.visualsort.util.Constants
 
 class InsertionSort : ISortingAlgorithm
 {
-    override val properName : String = "Selection Sort"
-    override val description : String = "Selection sort divides the input list into two sublists. The algorithm repeatedly iterates through the second, unsorted sublist, finds the minimum element and swaps it with the leftmost unsorted element, moving the sublist boundaries one element to the right."
+    override val properName : String = "Insertion Sort"
+    override val description : String = "The list is split into a sorted and an unsorted part. Values from the unsorted part are picked and moved to the correct position in the sorted part."
 
     override val complexityAverage: String = "n^2"
     override val complexityBest: String = "n"
