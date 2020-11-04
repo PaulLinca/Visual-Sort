@@ -18,5 +18,6 @@ class Constants
         const val QUICKSORT = "Quicksort"
         const val MERGESORT = "Merge Sort"
         const val INSERTIONSORT = "Insertion Sort"
+        const val HEAPSORT = "Heap Sort"
     }
 }
