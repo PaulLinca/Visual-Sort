@@ -24,55 +24,69 @@ class HeapSort: ISortingAlgorithm
 
         sortedEntries.clear()
 
+        // build a heap out of the original list
         var listCopy = listToSort.value!!
         for(index in listCopy.size / 2 - 1 downTo 0)
         {
-            heapify(listToSort, listCopy.size, index, speed, highlightedValues)
+            buildMaxHeap(listToSort, listCopy.size, index, speed, highlightedValues)
         }
 
+        // extraction phase (perform placements)
         listCopy = listToSort.value!!
         for(index in listCopy.size - 1 downTo 0)
         {
+            // move root of the heap to the end of the list
             val temp = listCopy[0].y
             listCopy[0].y = listCopy[index].y
             listCopy[index].y = temp
 
+            // root is in the correct position -> add to sorted entries
+            sortedEntries.add(Pair(index.toFloat(), Constants.PURPLE))
+            highlightedValues.postValue(sortedEntries)
             listToSort.postValue(listCopy)
             delay(500 - speed.value!!.toLong() + 1)
 
-            heapify(listToSort, index,0, speed, highlightedValues)
+            // rebuild the heap without the root
+            buildMaxHeap(listToSort, index,0, speed, highlightedValues)
         }
     }
 
-    private suspend fun heapify(listToSort: MutableLiveData<List<BarEntry>>, size: Int, index: Int, speed: MutableLiveData<Float>, highlightedValues: MutableLiveData<List<Pair<Float, Int>>>)
+    private suspend fun buildMaxHeap(listToSort: MutableLiveData<List<BarEntry>>, size: Int, currentRoot: Int, speed: MutableLiveData<Float>, highlightedValues: MutableLiveData<List<Pair<Float, Int>>>)
     {
         val listCopy = listToSort.value!!
-        var largest = index
-        val left = 2 * index + 1
-        val right = 2 * index + 2
+        var largestElementIndex = currentRoot
+        val leftChildIndex = 2 * currentRoot + 1
+        val rightChildIndex = 2 * currentRoot + 2
 
-        if(left < size && listCopy[left].y > listCopy[largest].y)
+        highlightedValues.postValue(arrayListOf(Pair(largestElementIndex.toFloat(), Constants.GREEN), Pair(leftChildIndex.toFloat(), Constants.YELLOW), Pair(rightChildIndex.toFloat(), Constants.YELLOW)) + sortedEntries)
+        delay(500 - speed.value!!.toLong() + 1)
+
+        if(leftChildIndex < size && listCopy[leftChildIndex].y > listCopy[largestElementIndex].y)
         {
-            largest = left
+            largestElementIndex = leftChildIndex
         }
 
-        if(right < size && listCopy[right].y > listCopy[largest].y)
+        if(rightChildIndex < size && listCopy[rightChildIndex].y > listCopy[largestElementIndex].y)
         {
-            largest = right
+            largestElementIndex = rightChildIndex
         }
 
-        if(largest != index)
+        if(largestElementIndex != currentRoot)
         {
-            val temp = listCopy[index].y
-            listCopy[index].y = listCopy[largest].y
-            listCopy[largest].y = temp
+            val temp = listCopy[currentRoot].y
+            listCopy[currentRoot].y = listCopy[largestElementIndex].y
+            listCopy[largestElementIndex].y = temp
 
+            highlightedValues.postValue(arrayListOf(Pair(currentRoot.toFloat(), Constants.GREEN), Pair(largestElementIndex.toFloat(), Constants.RED)) + sortedEntries)
             listToSort.postValue(listCopy)
             delay(500 - speed.value!!.toLong() + 1)
 
-            heapify(listToSort, size, largest, speed, highlightedValues)
+            buildMaxHeap(listToSort, size, largestElementIndex, speed, highlightedValues)
         }
-        listToSort.postValue(listCopy)
-        delay(500 - speed.value!!.toLong() + 1)
+        else
+        {
+            listToSort.postValue(listCopy)
+            delay(500 - speed.value!!.toLong() + 1)
+        }
     }
 }
