@@ -9,7 +9,7 @@ import ro.lincap.visualsort.util.Constants
 class HeapSort: ISortingAlgorithm
 {
     override val properName : String = Constants.HEAPSORT
-    override val description : String = ""
+    override val description : String = "Heap sort works by dividing the list into an unsorted part and a sorted part. The unsorted part will always be modified to make a max heap. Once the max heap is built, its root (the largest element) will be moved to the beginning of the sorted part and any heap conflicts will be resolved. This is repeated until there are no more elements in the usorted part."
 
     override val complexityAverage: String = "n log(n)"
     override val complexityBest: String = "n log(n)"
