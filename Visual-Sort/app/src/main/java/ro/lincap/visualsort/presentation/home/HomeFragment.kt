@@ -165,13 +165,13 @@ class HomeFragment : Fragment()
             }
             catch (e: IndexOutOfBoundsException)
             {
-                Log.w(this::class.java.canonicalName, e.message)
+                Log.w(this::class.java.canonicalName, e.message.toString())
             }
         }
         dataSet.colors = colors
 
         // Disable the bar value labels
-        dataSet.setDrawValues(false);
+        dataSet.setDrawValues(false)
 
         // Set the new chart data
         chart.data = BarData(dataSet)
