@@ -10,6 +10,8 @@ Currently available algorithms:
 * Selection Sort <br/>
 * Quicksort <br/>
 * Merge Sort <br/>
+* Insertion Sort <br/>
+* Heap Sort <br/>
 
 Currently working on adding more algorithms as well as a side-by-side comparison of the algorithms.
 
