@@ -15,4 +15,4 @@ Currently available algorithms:
 
 Currently working on adding more algorithms as well as a side-by-side comparison of the algorithms.
 
-<p align="center"> <img src="Design Documents/Screenshot_base.jpg" width=300px/>   <img src="Design Documents/Screenshot_sorting.jpg" width=300px/>   <img src="Design Documents/Screenshot_info.jpg" width=300px/> </p>
+<p align="center"> <img src="Design Documents/Screenshot_base.jpg" width=290px/>   <img src="Design Documents/Screenshot_sorting.jpg" width=290px/>   <img src="Design Documents/Screenshot_info.jpg" width=290px/> </p>
