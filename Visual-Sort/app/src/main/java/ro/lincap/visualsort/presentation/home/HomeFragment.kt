@@ -125,7 +125,7 @@ class HomeFragment : Fragment()
      */
     private fun handleAlgorithmSwitch()
     {
-        val items = arrayOf(Constants.BUBBLESORT, Constants.SELECTIONSORT, Constants.QUICKSORT, Constants.MERGESORT, Constants.INSERTIONSORT, Constants.HEAPSORT)
+        val items = arrayOf(Constants.BUBBLESORT, Constants.SELECTIONSORT, Constants.QUICKSORT, Constants.MERGESORT, Constants.INSERTIONSORT, Constants.HEAPSORT, Constants.SHELLSORT)
         context?.let {
             MaterialAlertDialogBuilder(it, R.style.MaterialAlertDialogTheme)
                 .setTitle(R.string.choose_algorithm_string)
@@ -138,6 +138,7 @@ class HomeFragment : Fragment()
                         3 -> viewModel.sortingAlgorithm = MergeSort()
                         4 -> viewModel.sortingAlgorithm = InsertionSort()
                         5 -> viewModel.sortingAlgorithm = HeapSort()
+                        6 -> viewModel.sortingAlgorithm = ShellSort()
                     }
                     viewModel.currentAlgorithm.value = items[which]
                 }
