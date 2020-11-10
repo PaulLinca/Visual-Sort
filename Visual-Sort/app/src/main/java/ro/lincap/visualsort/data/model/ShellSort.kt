@@ -9,11 +9,11 @@ import ro.lincap.visualsort.util.Constants
 class ShellSort : ISortingAlgorithm
 {
     override val properName : String = Constants.SHELLSORT
-    override val description : String = ""
+    override val description : String = "The algorithm works by comparing pairs of elements that are far apart from eachother, swapping them if they're in the wrong order, and then progressively reducing the gap between elements to be compared. \n\nThe gap sequence in the visualization example consists of constantly halving the size of the input. Many gap sequences have been proposed over the years, each one affecting the final time complexity of the algorithm."
 
-    override val complexityAverage: String = ""
-    override val complexityBest: String = ""
-    override val complexityWorst: String = ""
+    override val complexityAverage: String = "n log(n)^2"
+    override val complexityBest: String = "n log(n)"
+    override val complexityWorst: String = "n^2"
     override val complexitySpace: String = "1"
 
     override suspend fun sort(listToSort: MutableLiveData<List<BarEntry>>, speed: MutableLiveData<Float>, highlightedValues: MutableLiveData<List<Pair<Float, Int>>>)
