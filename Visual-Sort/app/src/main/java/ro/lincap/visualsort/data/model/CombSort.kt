@@ -5,15 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import com.github.mikephil.charting.data.BarEntry
 import kotlinx.coroutines.delay
 import ro.lincap.visualsort.util.Constants
-import kotlin.math.roundToInt
 
 class CombSort : ISortingAlgorithm
 {
     override val properName : String = Constants.COMBSORT
-    override val description : String = ""
+    override val description : String = "Comb Sort is an improvement over Bubble Sort. While bubble sort compares adjacent values, comb sort uses a gap between values compared. The gaps starts with a large value and gradually shrinks by a factor of 1.3 at every iteration until it reaches 1.\n\nThe algorithm is similar to shell sort as well, but shell sort completely sorts the list at each pass before reducing the gap, while comb sort does not."
 
     override val complexityAverage: String = "n^2"
-    override val complexityBest: String = "n"
+    override val complexityBest: String = "n log(n)"
     override val complexityWorst: String = "n^2"
     override val complexitySpace: String = "1"
 
