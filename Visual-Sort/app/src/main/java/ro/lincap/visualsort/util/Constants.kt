@@ -20,5 +20,6 @@ class Constants
         const val INSERTIONSORT = "Insertion Sort"
         const val HEAPSORT = "Heap Sort"
         const val SHELLSORT = "Shell Sort"
+        const val COMBSORT = "Comb Sort"
     }
 }
