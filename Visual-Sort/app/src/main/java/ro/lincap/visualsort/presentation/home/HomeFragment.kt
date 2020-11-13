@@ -11,6 +11,7 @@ import androidx.core.text.toSpanned
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.customview.customView
 import com.github.mikephil.charting.data.BarData
@@ -62,6 +63,10 @@ class HomeFragment : Fragment()
 
         infoButton.setOnClickListener {
             showAlgorithmInfo()
+        }
+
+        compareButton.setOnClickListener {
+            Navigation.findNavController(this.requireView()).navigate(R.id.action_homeFragment_to_comparisonFragment)
         }
 
         speedSlider.setLabelFormatter {
