@@ -12,6 +12,8 @@ Currently available algorithms:
 * Merge Sort <br/>
 * Insertion Sort <br/>
 * Heap Sort <br/>
+* Shell Sort <br/>
+* Comb Sort <br/>
 
 Currently working on adding more algorithms as well as a side-by-side comparison of the algorithms.
 
