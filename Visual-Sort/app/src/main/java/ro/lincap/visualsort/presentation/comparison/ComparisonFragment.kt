@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.comparison_fragment.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import ro.lincap.visualsort.databinding.ComparisonFragmentBinding
@@ -34,6 +36,8 @@ class ComparisonFragment : Fragment()
     override fun onActivityCreated(savedInstanceState: Bundle?)
     {
         super.onActivityCreated(savedInstanceState)
+
+        setupUI()
     }
 
     private fun setupUI()
@@ -41,6 +45,14 @@ class ComparisonFragment : Fragment()
         backButton.setOnClickListener {
             Navigation.findNavController(requireView()).navigateUp()
         }
+
+        viewModel.algorithms.observe(viewLifecycleOwner, Observer { currentAlgorithms ->
+            algorithmsList.also {
+                it.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                it.adapter =
+                    AlgorithmListAdapter(currentAlgorithms)
+            }
+        })
     }
 
 }
