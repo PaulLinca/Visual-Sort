@@ -24,6 +24,7 @@ import ro.lincap.visualsort.R
 import ro.lincap.visualsort.data.model.*
 import ro.lincap.visualsort.databinding.FragmentHomeBinding
 import ro.lincap.visualsort.util.Constants
+import ro.lincap.visualsort.util.configureChartAppearance
 import ro.lincap.visualsort.util.toComplexityFormat
 import java.lang.IndexOutOfBoundsException
 
@@ -55,7 +56,7 @@ class HomeFragment : Fragment()
 
     private fun setupUI()
     {
-        configureChartAppearance()
+        chart.configureChartAppearance()
         configureObservers()
 
         changeAlgorithmButton.setOnClickListener {
@@ -77,34 +78,6 @@ class HomeFragment : Fragment()
         sizeSlider.setLabelFormatter {
             "Size: $it"
         }
-    }
-
-    /**
-     * Defines how the chart should look and behave
-     */
-    private fun configureChartAppearance()
-    {
-        // disable zoom
-        chart.setScaleEnabled(false)
-
-        // Disable touch
-        chart.setTouchEnabled(false)
-
-        // disable labels
-        chart.axisLeft.setDrawLabels(false)
-        chart.axisRight.setDrawLabels(false)
-        chart.legend.isEnabled = false
-        chart.description.isEnabled = false
-
-        // disable grid lines
-        chart.axisLeft.setDrawGridLines(false)
-        chart.axisRight.setDrawGridLines(false)
-        chart.xAxis.isEnabled = false
-
-        // remove side padding
-        chart.setViewPortOffsets(0f, 0f, 0f, 0f)
-        // remove bottom padding
-        chart.axisLeft.axisMinimum = 0f
     }
 
     /**
