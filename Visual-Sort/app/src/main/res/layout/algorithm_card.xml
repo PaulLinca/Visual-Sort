@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="ro.lincap.visualsort.util.ExtensionsKt"/>
         <variable
             name="algorithm"
             type="ro.lincap.visualsort.data.model.ISortingAlgorithm" />
@@ -40,7 +41,7 @@
                 android:id="@+id/car_algorithmAverageComplexity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{algorithm.complexityAverage}"
+                android:text="@{ExtensionsKt.toComplexityFormat(algorithm.complexityAverage)}"
                 android:textColor="@color/secondaryTextColor"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -59,8 +60,9 @@
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/card_barChart"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/car_algorithmAverageComplexity"
                 tools:layout_editor_absoluteX="10dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

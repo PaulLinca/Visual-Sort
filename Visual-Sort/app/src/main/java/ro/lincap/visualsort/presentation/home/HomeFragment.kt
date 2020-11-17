@@ -24,6 +24,7 @@ import ro.lincap.visualsort.R
 import ro.lincap.visualsort.data.model.*
 import ro.lincap.visualsort.databinding.FragmentHomeBinding
 import ro.lincap.visualsort.util.Constants
+import ro.lincap.visualsort.util.toComplexityFormat
 import java.lang.IndexOutOfBoundsException
 
 class HomeFragment : Fragment()
@@ -216,25 +217,14 @@ class HomeFragment : Fragment()
         algorithmInfoDialog.also {
             it?.dialog_algorithmName?.text = algorithm.properName
             it?.dialog_algorithmDescription?.text = algorithm.description
-            it?.dialog_algorithmComplexityAverage?.text = getExponentialExpressionFormat(algorithm.complexityAverage)
-            it?.dialog_algorithmComplexityBest?.text = getExponentialExpressionFormat(algorithm.complexityBest)
-            it?.dialog_algorithmComplexityWorst?.text = getExponentialExpressionFormat(algorithm.complexityWorst)
-            it?.dialog_algorithmComplexitySpace?.text = getExponentialExpressionFormat(algorithm.complexitySpace)
+            it?.dialog_algorithmComplexityAverage?.text = algorithm.complexityAverage.toComplexityFormat()
+            it?.dialog_algorithmComplexityBest?.text = algorithm.complexityBest.toComplexityFormat()
+            it?.dialog_algorithmComplexityWorst?.text = algorithm.complexityWorst.toComplexityFormat()
+            it?.dialog_algorithmComplexitySpace?.text = algorithm.complexitySpace.toComplexityFormat()
             it?.dismissButton?.setOnClickListener {
                 algorithmInfoDialog?.dismiss()
             }
             it?.show()
         }
-    }
-
-    private fun getExponentialExpressionFormat(originalString: String): Spanned?
-    {
-        val splitString = originalString.split("^")
-        if(splitString.size == 1)
-        {
-            return "O(${splitString[0]})".toSpanned()
-        }
-
-        return Html.fromHtml("O(${splitString[0]}<sup>${splitString[1]}</sup>)")
     }
 }
